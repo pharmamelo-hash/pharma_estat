@@ -16,7 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "vite": "^5.4.11",
-    "vitest": "^2.1.8"
+    "vitest": "^5.1.0"
   },
   "dependencies": {
     "@fontsource/inter": "^5.1.0",
