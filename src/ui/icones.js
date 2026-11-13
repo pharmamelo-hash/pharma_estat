@@ -25,6 +25,8 @@ const P = {
   salvar: 'M5 3h11l3 3v15H5z M8 3v6h8V3 M8 21v-7h8v7',
   copiar: 'M9 9h11v11H9z M5 15H4V4h11v1',
   citar: 'M7 7h4v4c0 3-1 5-4 6 M15 7h4v4c0 3-1 5-4 6',
+  escrever: 'M4 20h4L19 9l-4-4L4 16z M14 6l4 4',
+  corrigir: 'M6 3h9l4 4v6 M14 3v5h5 M6 3v18h7 M14 19l2 2 5-5',
   planejar: 'M12 2l9 9-9 9-9-9z',
   aprender: 'M2 8l10-5 10 5-10 5z M6 10v5c3 2 9 2 12 0v-5',
 };

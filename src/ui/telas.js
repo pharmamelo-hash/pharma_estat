@@ -18,6 +18,8 @@ import { telaTrilha, telaAula, barraProgresso } from './tela-trilha.js';
 import TRILHA from '../../base/trilha.json';
 import { resumoTrilha } from '../estado/progresso.js';
 import { telaEfeito } from './tela-efeito.js';
+import { telaRedator } from './tela-redator.js';
+import { telaCorretor } from './tela-corretor.js';
 import { blocoCitar } from './citar.js';
 
 function cartaoProjeto() {
@@ -45,6 +47,8 @@ function telaInicio() {
       bloco('planejar', '◇', 'Planejar meu estudo', 'Tipo de estudo, teste, tamanho da amostra e revisão metodológica do projeto.', '#/planejar')),
     cartaoProjeto(),
     el('div', { class: 'grade grade-2' },
+      cartaoAtalho({ etiqueta: 'Projeto', titulo: 'Corrigir meu projeto (Word/PDF)', texto: 'O app lê o arquivo, aponta o que falta no método e corrige com o seu OK.', destino: '#/projeto/corrigir' }),
+      cartaoAtalho({ etiqueta: 'Projeto', titulo: 'Escrever o projeto do zero', texto: 'Modelos CEP e TCC/Residência, com o método redigido pelo app.', destino: '#/projeto/redigir' }),
       cartaoAtalho({ etiqueta: 'Planejar', titulo: 'Qual é o meu tipo de estudo?', texto: 'Perguntas guiadas levam ao desenho, com vieses e diretriz de relato.', destino: '#/planejar/desenho' }),
       cartaoAtalho({ etiqueta: 'Planejar', titulo: 'Qual teste estatístico usar?', texto: 'Pelo tipo de desfecho e de grupo, com o porquê e as referências.', destino: '#/planejar/teste' }),
       cartaoAtalho({ etiqueta: 'Dimensionar', titulo: 'Quantos participantes?', texto: 'Seis cálculos conferidos contra o R, com curva de poder.', destino: '#/planejar/amostra' }),
@@ -62,7 +66,9 @@ function telaPlanejar() {
       cartaoAtalho({ etiqueta: 'Passo 1', titulo: 'Tipo de estudo', texto: 'Assistente de desenho.', destino: '#/planejar/desenho' }),
       cartaoAtalho({ etiqueta: 'Passo 2', titulo: 'Teste estatístico', texto: 'Assistente de teste e ficha.', destino: '#/planejar/teste' }),
       cartaoAtalho({ etiqueta: 'Passo 3', titulo: 'Tamanho amostral', texto: 'Cálculo com premissas.', destino: '#/planejar/amostra' }),
-      cartaoAtalho({ etiqueta: 'Passo 4', titulo: 'Revisão metodológica', texto: 'Parecer com as inconsistências do projeto.', destino: '#/projeto/revisao' })),
+      cartaoAtalho({ etiqueta: 'Passo 4', titulo: 'Escrever o projeto', texto: 'Modelo CEP ou TCC/Residência, com o método redigido pelo app. Baixa em Word ou PDF.', destino: '#/projeto/redigir' }),
+      cartaoAtalho({ etiqueta: 'Passo 5', titulo: 'Corrigir projeto pronto', texto: 'Envie o Word ou PDF: o app aponta, explica e corrige com o seu OK.', destino: '#/projeto/corrigir' }),
+      cartaoAtalho({ etiqueta: 'Formulário', titulo: 'Revisão metodológica', texto: 'Parecer com as inconsistências do projeto.', destino: '#/projeto/revisao' })),
   ];
 }
 function telaAnalisar() {
@@ -108,6 +114,8 @@ export const ROTAS = {
   '/planejar/amostra': { tela: telaAmostra, menu: 'planejar', titulo: 'Tamanho amostral' },
   '/projetos': { tela: telaProjetos, menu: 'planejar', titulo: 'Projetos' },
   '/projeto/revisao': { tela: telaRevisao, menu: 'planejar', titulo: 'Revisão metodológica' },
+  '/projeto/redigir': { tela: telaRedator, menu: 'planejar', titulo: 'Escrever o projeto' },
+  '/projeto/corrigir': { tela: telaCorretor, menu: 'planejar', titulo: 'Corrigir projeto' },
   '/projeto/coleta': { tela: telaColeta, menu: 'analisar', titulo: 'Acompanhamento da coleta' },
   '/analisar': { tela: telaAnalisar, menu: 'analisar', titulo: 'Analisar' },
   '/analisar/auto': { tela: telaAuto, menu: 'analisar', titulo: 'Analisar meu trabalho' },
@@ -134,7 +142,13 @@ export const MENU_LATERAL = [
   { grupo: 'Principal', itens: [
     { rotulo: 'Início', icone: 'inicio', destino: '#/inicio' },
     { rotulo: 'Analisar meu trabalho', icone: 'analisar', destino: '#/analisar/auto' },
+  ] },
+  { grupo: 'Meu projeto', itens: [
     { rotulo: 'Projetos', icone: 'projetos', destino: '#/projetos' },
+    { rotulo: 'Escrever o projeto', icone: 'escrever', destino: '#/projeto/redigir' },
+    { rotulo: 'Corrigir projeto (Word/PDF)', icone: 'corrigir', destino: '#/projeto/corrigir' },
+    { rotulo: 'Revisão metodológica', icone: 'revisao', destino: '#/projeto/revisao' },
+    { rotulo: 'Acompanhar a coleta', icone: 'coleta', destino: '#/projeto/coleta' },
   ] },
   { grupo: 'Ferramentas estatísticas', itens: [
     { rotulo: 'Tipo de estudo', icone: 'desenho', destino: '#/planejar/desenho' },
@@ -142,8 +156,6 @@ export const MENU_LATERAL = [
     { rotulo: 'Amostra e poder', icone: 'amostra', destino: '#/planejar/amostra' },
     { rotulo: 'Tamanho de efeito', icone: 'efeito', destino: '#/ferramentas/efeito' },
     { rotulo: 'Análise manual', icone: 'manual', destino: '#/analisar/dados', tambem: ['/analisar/resultado', '/analisar/relatorio'] },
-    { rotulo: 'Acompanhar a coleta', icone: 'coleta', destino: '#/projeto/coleta' },
-    { rotulo: 'Revisão metodológica', icone: 'revisao', destino: '#/projeto/revisao' },
   ] },
   { grupo: 'Recursos didáticos', itens: [
     { rotulo: 'Trilha de aulas', icone: 'trilha', destino: '#/aprender/trilha', tambem: ['/aprender/aula/'] },

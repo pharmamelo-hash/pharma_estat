@@ -131,5 +131,13 @@ export function importarProjeto(json) {
       else if (Array.isArray(v)) limpo.revisao[k] = listaValores(v);
     }
   }
+  // Texto do projeto (Redator, F19): só strings, com limite de tamanho.
+  if (p.texto && typeof p.texto === 'object') {
+    const meta = {};
+    for (const k of ['titulo', 'autor', 'orientador', 'instituicao', 'programa', 'cidade', 'ano']) if (typeof p.texto.meta?.[k] === 'string') meta[k] = p.texto.meta[k].slice(0, 300);
+    const secoes = {};
+    for (const [k, v] of Object.entries(p.texto.secoes || {})) if (/^[a-z_0-9]{1,40}$/.test(k) && typeof v === 'string') secoes[k] = v.slice(0, 30000);
+    limpo.texto = { modelo: p.texto.modelo === 'abnt' ? 'abnt' : 'cep', meta, secoes };
+  }
   return limpo;
 }

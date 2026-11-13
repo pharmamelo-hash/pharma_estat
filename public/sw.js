@@ -2,7 +2,7 @@
 // Estratégia: página principal = rede primeiro (pega versão nova), cópia do cache se offline;
 // demais arquivos do próprio site = cache primeiro (nomes com hash mudam a cada versão).
 // Nunca guarda nada de outros domínios e nunca guarda dados do estudo.
-const VERSAO_CACHE = 'pharmaestat-v0.13.0';
+const VERSAO_CACHE = 'pharmaestat-v0.14.0';
 const ESSENCIAIS = ['./', './index.html', './manifest.webmanifest', './icones/icone.svg'];
 
 self.addEventListener('install', (evento) => {

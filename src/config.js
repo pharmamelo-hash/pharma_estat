@@ -5,7 +5,7 @@ export const SUBTITULO_APP = 'Consultor de bioestatística · @pharmamelo';
 export const FRASE_APP = 'Do problema de pesquisa ao teste certo, com a justificativa e a referência.';
 
 // Versões exibidas no rodapé (Doc 2 — versionamento separado do app e da base).
-export const VERSAO_APP = '0.13.0';
+export const VERSAO_APP = '0.14.0';
 export const VERSAO_BASE = '2026.11-rascunho';
 
 // Aviso fixo (Doc 7.4). Não remover.

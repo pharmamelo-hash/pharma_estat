@@ -291,6 +291,18 @@ function painel(def) {
   return el('div', { class: 'calc-layout' }, config, flutuante, resultado);
 }
 
+/** Texto do cálculo salvo no projeto (usado pelo Redator e pelo Corretor). */
+export function textoAmostraSalva(p) {
+  const a = p?.amostra;
+  const def = a?.calculo && DEF[a.calculo];
+  if (!def || !a.parametros) return null;
+  const op = { modo: a.opcoes?.modo === 'poder' && !SO_ESTIMATIVA.has(def.id) ? 'poder' : 'n', caudas: a.opcoes?.caudas ?? 2, k: a.opcoes?.k ?? 1, perdas: a.perdas ?? 0 };
+  try {
+    const r = resolver(def.id, a.parametros, op);
+    return `${textoProjeto(def, a.parametros, r, op)} Cálculo realizado no ${NOME_APP} (versão ${VERSAO_APP}).`;
+  } catch { return null; }
+}
+
 let redesenharTela = null;
 export function telaAmostra() {
   const sug = new Set(sugeridos());

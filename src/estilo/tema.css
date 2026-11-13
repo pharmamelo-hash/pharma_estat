@@ -542,3 +542,52 @@ input[type='date'] { font: 400 1rem var(--fonte); color: var(--texto); backgroun
 :root[data-tema='escuro'] .resumo-flutuante { color: #0F1A1F; }
 @media (min-width: 1040px) { .resumo-flutuante { display: none; } }
 @media print { .resumo-flutuante { display: none !important; } }
+
+/* ---------- Redator e Corretor de projeto (F19/F20) ---------- */
+.redator-grupo { margin: 22px 4px 8px; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; color: var(--texto-suave); }
+.redator-secao.sub { border-left: 4px solid var(--primaria-clara); }
+.redator-cabeca { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.redator-cabeca h3 { margin: 0; }
+.redator-secao textarea { width: 100%; min-height: 110px; resize: vertical; font: inherit; line-height: 1.55; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--borda); background: var(--superficie); color: var(--texto); }
+.redator-secao textarea:focus { outline: 2px solid var(--secundaria); border-color: transparent; }
+.dica-tutor { font-size: .87rem; color: var(--texto-suave); background: #FFF8E6; border-left: 3px solid var(--acento); padding: 8px 10px; border-radius: 8px; margin: 8px 0 10px; }
+:root[data-tema='escuro'] .dica-tutor { background: #2A2416; }
+.redator-progresso { margin: 6px 0 12px; }
+.redator-progresso .medidor span { background: var(--secundaria); }
+.botao.pequeno { display: inline-flex; align-items: center; gap: 6px; }
+.linha-check { display: flex; align-items: center; gap: 8px; margin: 6px 0 10px; font-weight: 500; }
+.linha-check input { width: 18px; height: 18px; }
+.zona-arquivo { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 28px 16px; border: 2px dashed var(--borda); border-radius: 14px; text-align: center; cursor: pointer; color: var(--texto-suave); background: var(--fundo); }
+.zona-arquivo:hover, .zona-arquivo:focus-within { border-color: var(--secundaria); color: var(--primaria); }
+.zona-arquivo strong { font-size: 1.1rem; color: var(--primaria); }
+.lista-sinais { padding-left: 18px; margin: 4px 0 12px; }
+.lista-sinais li { margin-bottom: 4px; }
+.chip.ok { background: #E5F4E4; color: #1E5E22; border-color: #BFDDBD; }
+.chip.falta { background: var(--fundo); color: var(--texto-suave); }
+:root[data-tema='escuro'] .chip.ok { background: #1B3320; color: #A6E0A9; border-color: #2F5A34; }
+.achado { border-left: 5px solid var(--borda); }
+.achado.grav-alta { border-left-color: var(--erro); }
+.achado.grav-media { border-left-color: var(--acento); }
+.achado.grav-baixa { border-left-color: var(--secundaria); }
+.achado.feito { opacity: .7; }
+.achado.feito.aplicada { border-left-color: var(--sucesso); opacity: .85; }
+.achado-topo { display: flex; align-items: flex-start; gap: 10px; }
+.achado-topo h3 { margin: 0; font-size: 1rem; }
+.selo-grav { flex: none; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 3px 8px; border-radius: 999px; background: var(--fundo); border: 1px solid var(--borda); }
+.selo-grav.alta { background: #FBEBEB; color: #9B1C1C; border-color: #F2C4C4; }
+.selo-grav.media { background: #F9EEDA; color: #7A4A00; border-color: #EDD3A2; }
+.selo-grav.baixa { background: #E7F1FB; color: #1F4E79; border-color: #C3DAF0; }
+:root[data-tema='escuro'] .selo-grav { filter: brightness(.85); }
+.porque { margin: 8px 0; }
+.previa-correcao { margin: 8px 0; }
+.trecho-novo, .previa-doc .trecho-novo { background: #FFF6CC; border-left: 3px solid #E8C547; padding: 6px 10px; border-radius: 6px; margin: 4px 0; }
+.trecho-alterado { background: #E5F4E4; border-left: 3px solid #7BC47F; padding: 6px 10px; border-radius: 6px; }
+:root[data-tema='escuro'] .trecho-novo { background: #3A3216; border-left-color: #B89A2E; }
+:root[data-tema='escuro'] .trecho-alterado { background: #1B3320; }
+mark.lacuna { background: #D6ECFF; color: #0B3B66; padding: 0 3px; border-radius: 4px; }
+.feito-texto { font-weight: 600; color: var(--sucesso); align-self: center; }
+.numero-grav { display: flex; flex-direction: column; align-items: center; padding: 10px; border-radius: 10px; background: var(--fundo); }
+.numero-grav strong { font-size: 1.6rem; }
+.numero-grav.alta strong { color: var(--erro); } .numero-grav.media strong { color: var(--atencao); } .numero-grav.baixa strong { color: var(--secundaria); }
+.previa-doc h3 { margin-top: 14px; text-transform: uppercase; font-size: .95rem; }
+.previa-doc p { text-align: justify; }

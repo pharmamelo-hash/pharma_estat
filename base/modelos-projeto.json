@@ -1,0 +1,390 @@
+{
+  "versao": "2026.11",
+  "modelos": {
+    "cep": {
+      "nome": "Plataforma Brasil / CEP",
+      "descricao": "Segue os campos pedidos no cadastro da Plataforma Brasil e o que o CEP costuma conferir.",
+      "secoes": [
+        {
+          "id": "resumo",
+          "titulo": "Resumo",
+          "nivel": 1,
+          "ajuda": "Até cerca de 250 palavras: problema, objetivo, desenho, população, desfecho principal e análise. Escreva por último."
+        },
+        {
+          "id": "introducao",
+          "titulo": "Introdução",
+          "nivel": 1,
+          "ajuda": "Do geral ao específico: o problema de saúde, o que já se sabe (com referências) e a lacuna que o estudo preenche."
+        },
+        {
+          "id": "hipotese",
+          "titulo": "Hipótese",
+          "nivel": 1,
+          "ajuda": "Uma frase testável. Ex.: a infusão estendida reduz a mortalidade em 30 dias em relação à intermitente. Estudos descritivos podem dispensar."
+        },
+        {
+          "id": "objetivos",
+          "titulo": "Objetivos",
+          "nivel": 1,
+          "ajuda": "Primário: um verbo no infinitivo ligado ao desfecho principal (estimar, comparar, avaliar a associação). Secundários: no máximo 3 a 5."
+        },
+        {
+          "id": "metodologia",
+          "titulo": "Metodologia",
+          "nivel": 1,
+          "ajuda": "",
+          "grupo": true
+        },
+        {
+          "id": "desenho",
+          "titulo": "Tipo de estudo",
+          "nivel": 2,
+          "auto": "desenho",
+          "ajuda": "Nomeie o desenho (ex.: coorte retrospectiva) e diga por que ele responde à pergunta."
+        },
+        {
+          "id": "local",
+          "titulo": "Local e período",
+          "nivel": 2,
+          "ajuda": "Instituição, setor e período da coleta (mês/ano de início e fim)."
+        },
+        {
+          "id": "populacao",
+          "titulo": "População e amostra",
+          "nivel": 2,
+          "ajuda": "Quem é a população-alvo e como os participantes serão selecionados (consecutivos, sorteio, censo do período)."
+        },
+        {
+          "id": "criterios",
+          "titulo": "Critérios de inclusão e exclusão",
+          "nivel": 2,
+          "auto": "criterios",
+          "ajuda": "Inclusão define quem entra; exclusão retira quem entraria mas atrapalharia a resposta (ex.: dados incompletos, transferência)."
+        },
+        {
+          "id": "amostra",
+          "titulo": "Cálculo do tamanho amostral",
+          "nivel": 2,
+          "auto": "amostra",
+          "ajuda": "Parâmetros (efeito esperado e fonte, α, poder, perdas) e o n final. Use a calculadora do app e cole o texto."
+        },
+        {
+          "id": "coleta",
+          "titulo": "Procedimentos de coleta de dados",
+          "nivel": 2,
+          "ajuda": "Fonte dos dados (prontuário, entrevista, exame), instrumento (ficha de coleta) e quem coleta."
+        },
+        {
+          "id": "variaveis",
+          "titulo": "Variáveis e desfechos",
+          "nivel": 2,
+          "auto": "desfechos",
+          "ajuda": "Desfecho primário (um), desfechos secundários e variáveis explicativas, com unidade e forma de medida."
+        },
+        {
+          "id": "analise",
+          "titulo": "Análise estatística",
+          "nivel": 2,
+          "auto": "analise",
+          "ajuda": "Estatística descritiva, teste de normalidade, teste principal, nível de significância, medida de efeito com IC 95% e software."
+        },
+        {
+          "id": "riscos",
+          "titulo": "Riscos e benefícios",
+          "nivel": 1,
+          "auto": "riscos",
+          "ajuda": "Todo estudo tem algum risco (no mínimo, quebra de sigilo). Descreva o risco e como será minimizado; benefícios diretos ou para a sociedade."
+        },
+        {
+          "id": "etica",
+          "titulo": "Aspectos éticos",
+          "nivel": 1,
+          "auto": "etica",
+          "ajuda": "Resolução CNS 466/2012, aprovação no CEP antes da coleta, TCLE (ou pedido de dispensa com justificativa) e proteção dos dados."
+        },
+        {
+          "id": "cronograma",
+          "titulo": "Cronograma",
+          "nivel": 1,
+          "auto": "cronograma",
+          "ajuda": "A coleta só pode começar depois da aprovação do CEP. Mostre as etapas por mês."
+        },
+        {
+          "id": "orcamento",
+          "titulo": "Orçamento",
+          "nivel": 1,
+          "auto": "orcamento",
+          "ajuda": "Itens, valores e fonte (ex.: recursos próprios). O CEP exige mesmo quando o custo é baixo."
+        },
+        {
+          "id": "referencias",
+          "titulo": "Referências",
+          "nivel": 1,
+          "auto": "referencias",
+          "ajuda": "Todas as citadas no texto, no estilo pedido (Vancouver ou ABNT)."
+        }
+      ]
+    },
+    "abnt": {
+      "nome": "TCC / Residência (ABNT)",
+      "descricao": "Estrutura de projeto acadêmico (NBR 15287), comum em TCC, residência e pós-graduação.",
+      "secoes": [
+        {
+          "id": "introducao",
+          "titulo": "Introdução",
+          "nivel": 1,
+          "ajuda": "Contextualize o tema, apresente o problema de pesquisa e a lacuna. Termine com a pergunta do estudo."
+        },
+        {
+          "id": "justificativa",
+          "titulo": "Justificativa",
+          "nivel": 1,
+          "ajuda": "Por que vale a pena: relevância para o paciente, o serviço e a ciência; viabilidade."
+        },
+        {
+          "id": "objetivos",
+          "titulo": "Objetivos",
+          "nivel": 1,
+          "ajuda": "Geral: um, ligado ao desfecho principal. Específicos: etapas para atingi-lo, com verbos no infinitivo."
+        },
+        {
+          "id": "referencial",
+          "titulo": "Referencial teórico",
+          "nivel": 1,
+          "ajuda": "Conceitos e estudos que sustentam o projeto, com citações."
+        },
+        {
+          "id": "metodologia",
+          "titulo": "Metodologia",
+          "nivel": 1,
+          "ajuda": "",
+          "grupo": true
+        },
+        {
+          "id": "desenho",
+          "titulo": "Tipo de estudo",
+          "nivel": 2,
+          "auto": "desenho",
+          "ajuda": "Nomeie o desenho e justifique a escolha."
+        },
+        {
+          "id": "local",
+          "titulo": "Local e período",
+          "nivel": 2,
+          "ajuda": "Instituição, setor e período."
+        },
+        {
+          "id": "populacao",
+          "titulo": "População e amostra",
+          "nivel": 2,
+          "ajuda": "População-alvo e forma de seleção."
+        },
+        {
+          "id": "criterios",
+          "titulo": "Critérios de inclusão e exclusão",
+          "nivel": 2,
+          "auto": "criterios",
+          "ajuda": "Quem entra e quem sai, de forma verificável."
+        },
+        {
+          "id": "amostra",
+          "titulo": "Cálculo do tamanho amostral",
+          "nivel": 2,
+          "auto": "amostra",
+          "ajuda": "Parâmetros e n final, com a fonte do efeito esperado."
+        },
+        {
+          "id": "coleta",
+          "titulo": "Coleta de dados",
+          "nivel": 2,
+          "ajuda": "Fonte, instrumento e procedimentos."
+        },
+        {
+          "id": "variaveis",
+          "titulo": "Variáveis e desfechos",
+          "nivel": 2,
+          "auto": "desfechos",
+          "ajuda": "Desfecho primário, secundários e variáveis explicativas."
+        },
+        {
+          "id": "analise",
+          "titulo": "Análise estatística",
+          "nivel": 2,
+          "auto": "analise",
+          "ajuda": "Descritiva, testes, significância, efeito com IC 95% e software."
+        },
+        {
+          "id": "etica",
+          "titulo": "Aspectos éticos",
+          "nivel": 2,
+          "auto": "etica",
+          "ajuda": "Resolução 466/2012, CEP, TCLE ou dispensa, sigilo e LGPD."
+        },
+        {
+          "id": "resultados_esperados",
+          "titulo": "Resultados esperados",
+          "nivel": 1,
+          "ajuda": "O que se espera encontrar e como os resultados serão usados (sem antecipar conclusões)."
+        },
+        {
+          "id": "cronograma",
+          "titulo": "Cronograma",
+          "nivel": 1,
+          "auto": "cronograma",
+          "ajuda": "Etapas por mês; coleta depois da aprovação do CEP."
+        },
+        {
+          "id": "orcamento",
+          "titulo": "Orçamento",
+          "nivel": 1,
+          "auto": "orcamento",
+          "ajuda": "Itens, valores e fonte de financiamento."
+        },
+        {
+          "id": "referencias",
+          "titulo": "Referências",
+          "nivel": 1,
+          "auto": "referencias",
+          "ajuda": "Conforme a NBR 6023 (ABNT) ou o estilo exigido pelo programa."
+        }
+      ]
+    }
+  },
+  "sinonimos_secoes": {
+    "resumo": [
+      "resumo",
+      "abstract"
+    ],
+    "introducao": [
+      "introdução",
+      "introducao",
+      "contextualização"
+    ],
+    "justificativa": [
+      "justificativa",
+      "relevância"
+    ],
+    "hipotese": [
+      "hipótese",
+      "hipóteses",
+      "hipotese"
+    ],
+    "objetivos": [
+      "objetivos",
+      "objetivo",
+      "objetivo geral",
+      "objetivos específicos",
+      "objetivo primário",
+      "objetivos secundários"
+    ],
+    "referencial": [
+      "referencial teórico",
+      "revisão de literatura",
+      "revisão da literatura",
+      "fundamentação teórica"
+    ],
+    "metodologia": [
+      "metodologia",
+      "métodos",
+      "método",
+      "materiais e métodos",
+      "metodologia proposta",
+      "casuística e métodos"
+    ],
+    "desenho": [
+      "tipo de estudo",
+      "desenho do estudo",
+      "delineamento",
+      "tipo de pesquisa",
+      "desenho"
+    ],
+    "local": [
+      "local",
+      "local do estudo",
+      "local e período",
+      "cenário",
+      "período",
+      "local de estudo"
+    ],
+    "populacao": [
+      "população",
+      "população e amostra",
+      "amostra e população",
+      "participantes",
+      "sujeitos da pesquisa",
+      "população do estudo",
+      "casuística"
+    ],
+    "criterios": [
+      "critérios de inclusão",
+      "critérios de exclusão",
+      "critérios de inclusão e exclusão",
+      "critérios de elegibilidade",
+      "critérios de seleção"
+    ],
+    "amostra": [
+      "cálculo amostral",
+      "tamanho da amostra",
+      "cálculo do tamanho amostral",
+      "tamanho amostral",
+      "dimensionamento da amostra",
+      "amostragem"
+    ],
+    "coleta": [
+      "coleta de dados",
+      "procedimentos",
+      "procedimentos de coleta",
+      "instrumento de coleta",
+      "coleta",
+      "instrumentos"
+    ],
+    "variaveis": [
+      "variáveis",
+      "variáveis do estudo",
+      "desfechos",
+      "desfecho primário",
+      "desfechos secundários",
+      "variáveis e desfechos"
+    ],
+    "analise": [
+      "análise estatística",
+      "análise dos dados",
+      "análise de dados",
+      "tratamento estatístico",
+      "metodologia de análise de dados",
+      "análise"
+    ],
+    "riscos": [
+      "riscos",
+      "benefícios",
+      "riscos e benefícios"
+    ],
+    "etica": [
+      "aspectos éticos",
+      "considerações éticas",
+      "ética",
+      "questões éticas"
+    ],
+    "resultados_esperados": [
+      "resultados esperados",
+      "impactos esperados"
+    ],
+    "cronograma": [
+      "cronograma",
+      "cronograma de execução"
+    ],
+    "orcamento": [
+      "orçamento",
+      "orcamento",
+      "recursos",
+      "financiamento"
+    ],
+    "referencias": [
+      "referências",
+      "referencias",
+      "bibliografia",
+      "referências bibliográficas"
+    ]
+  }
+}

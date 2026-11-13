@@ -14,6 +14,8 @@ export const FERRAMENTAS = [
   { titulo: 'Qual teste usar?', texto: 'Assistente de escolha do teste', destino: '#/planejar/teste', chaves: 'classificador escolha teste estatistico' },
   { titulo: 'Qual é o meu tipo de estudo?', texto: 'Assistente de desenho', destino: '#/planejar/desenho', chaves: 'desenho delineamento estudo' },
   { titulo: 'Revisão metodológica', texto: 'Parecer sobre o projeto', destino: '#/projeto/revisao', chaves: 'parecer projeto revisao banca' },
+  { titulo: 'Escrever o projeto', texto: 'Modelos CEP e TCC/Residência; baixar em Word ou PDF', destino: '#/projeto/redigir', chaves: 'redigir redator escrever projeto word pdf docx plataforma brasil cep abnt tcc residencia' },
+  { titulo: 'Corrigir projeto pronto', texto: 'Enviar Word ou PDF e corrigir o método', destino: '#/projeto/corrigir', chaves: 'corrigir correcao enviar arquivo word pdf docx projeto pronto ajustar' },
   { titulo: 'Acompanhar a coleta', texto: 'Recrutamento, perdas, poder atingido', destino: '#/projeto/coleta', chaves: 'coleta recrutamento meta' },
 ];
 
