@@ -1,0 +1,155 @@
+{
+  "id": "arvore_teste",
+  "versao_base": "2026.11-rascunho",
+  "titulo": "Qual teste estatístico usar?",
+  "raiz": "n_objetivo",
+  "refs": ["r_altman_1991", "r_field_2012", "r_agresti_2013"],
+  "nos": {
+    "n_objetivo": {
+      "pergunta": "Qual é o objetivo principal da análise?",
+      "explicacao": "Pense na frase do seu objetivo: \"comparar a mortalidade entre A e B\" é comparar; \"relacionar a dose com o nível sérico\" é relacionar; \"identificar fatores associados, ajustando por idade\" é ajustar por vários fatores.",
+      "opcoes": [
+        { "valor": "comparar", "rotulo": "Comparar grupos ou momentos", "detalhe": "Ex.: tratamento A × B; antes × depois", "proximo": "n_desfecho" },
+        { "valor": "relacionar", "rotulo": "Relacionar duas variáveis", "detalhe": "Ex.: dose × concentração sérica", "proximo": "n_correlacao" },
+        { "valor": "ajustar", "rotulo": "Ajustar por vários fatores ou predizer", "detalhe": "Ex.: fatores associados a óbito", "proximo": "n_regressao" },
+        { "valor": "tempo", "rotulo": "Tempo até um evento", "detalhe": "Ex.: tempo até alta ou óbito, com perdas de seguimento", "proximo": "n_sobrevivencia" },
+        { "valor": "concordancia", "rotulo": "Concordância ou desempenho de um teste", "detalhe": "Ex.: dois avaliadores, dois métodos, teste diagnóstico", "proximo": "n_concordancia" }
+      ]
+    },
+    "n_desfecho": {
+      "pergunta": "Qual é o tipo do desfecho (a variável que você quer comparar)?",
+      "explicacao": "Quantitativo: número com unidade (dias, mg/dL). Ordinal: categorias com ordem (leve, moderado, grave; escalas de dor). Categórico: categorias sem ordem ou sim/não (óbito, infecção).",
+      "opcoes": [
+        { "valor": "quantitativo", "rotulo": "Quantitativo", "detalhe": "Ex.: tempo de internação, creatinina", "proximo": "n_q_grupos" },
+        { "valor": "ordinal", "rotulo": "Ordinal", "detalhe": "Ex.: escala de dor de 0 a 10, grau de lesão", "proximo": "n_o_grupos" },
+        { "valor": "categorico", "rotulo": "Categórico (sim/não ou categorias)", "detalhe": "Ex.: óbito, cura, tipo de infecção", "proximo": "n_c_pareado" }
+      ]
+    },
+    "n_q_grupos": {
+      "pergunta": "Quantos grupos ou momentos serão comparados?",
+      "opcoes": [
+        { "valor": "2", "rotulo": "Dois", "proximo": "n_q2_pareado" },
+        { "valor": "3+", "rotulo": "Três ou mais", "proximo": "n_q3_pareado" }
+      ]
+    },
+    "n_q2_pareado": {
+      "pergunta": "Os dois grupos têm pessoas diferentes ou são as mesmas pessoas medidas duas vezes?",
+      "explicacao": "Pareado: mesmas pessoas antes e depois, ou pares formados de propósito (ex.: olho direito × esquerdo). Independente: cada pessoa está em um só grupo.",
+      "opcoes": [
+        { "valor": "independente", "rotulo": "Pessoas diferentes (independentes)", "proximo": "n_q2i_normal" },
+        { "valor": "pareado", "rotulo": "Mesmas pessoas ou pares (pareado)", "proximo": "n_q2p_normal" }
+      ]
+    },
+    "n_q2i_normal": {
+      "pergunta": "O desfecho tem distribuição aproximadamente normal em cada grupo?",
+      "explicacao": "Avalie por histograma e gráfico Q-Q (o app faz isso na análise). Com 30 ou mais por grupo e sem assimetria forte, o teste t tolera pequenos desvios. Tempos de internação e dosagens costumam ser assimétricos.",
+      "opcoes": [
+        { "valor": "sim", "rotulo": "Sim ou aproximadamente", "resultado": "t_t_welch" },
+        { "valor": "nao", "rotulo": "Não (assimétrico ou com valores extremos)", "resultado": "t_mann_whitney" }
+      ]
+    },
+    "n_q2p_normal": {
+      "pergunta": "As diferenças entre os pares têm distribuição aproximadamente normal?",
+      "explicacao": "No teste pareado o que importa é a distribuição das diferenças (depois − antes), não de cada medida.",
+      "opcoes": [
+        { "valor": "sim", "rotulo": "Sim ou aproximadamente", "resultado": "t_t_pareado" },
+        { "valor": "nao", "rotulo": "Não", "resultado": "t_wilcoxon_pareado" }
+      ]
+    },
+    "n_q3_pareado": {
+      "pergunta": "Os grupos têm pessoas diferentes ou são as mesmas pessoas em vários momentos?",
+      "opcoes": [
+        { "valor": "independente", "rotulo": "Pessoas diferentes", "proximo": "n_q3i_normal" },
+        { "valor": "pareado", "rotulo": "Mesmas pessoas em vários momentos", "proximo": "n_q3p_normal" }
+      ]
+    },
+    "n_q3i_normal": {
+      "pergunta": "O desfecho tem distribuição aproximadamente normal em cada grupo?",
+      "opcoes": [
+        { "valor": "sim", "rotulo": "Sim ou aproximadamente", "proximo": "n_q3i_variancia" },
+        { "valor": "nao", "rotulo": "Não", "resultado": "t_kruskal_wallis" }
+      ]
+    },
+    "n_q3i_variancia": {
+      "pergunta": "As variâncias (dispersões) dos grupos são parecidas?",
+      "explicacao": "Regra prática: se o maior desvio-padrão for menos que o dobro do menor, as variâncias são parecidas. O teste de Levene ajuda a confirmar.",
+      "opcoes": [
+        { "valor": "sim", "rotulo": "Sim, parecidas", "resultado": "t_anova_um_fator" },
+        { "valor": "nao", "rotulo": "Não, muito diferentes", "resultado": "t_welch_anova" }
+      ]
+    },
+    "n_q3p_normal": {
+      "pergunta": "O desfecho tem distribuição aproximadamente normal em cada momento?",
+      "opcoes": [
+        { "valor": "sim", "rotulo": "Sim ou aproximadamente", "resultado": "t_anova_medidas_repetidas" },
+        { "valor": "nao", "rotulo": "Não", "resultado": "t_friedman" }
+      ]
+    },
+    "n_o_grupos": {
+      "pergunta": "Quantos grupos ou momentos, e são independentes ou pareados?",
+      "opcoes": [
+        { "valor": "2i", "rotulo": "Dois grupos independentes", "resultado": "t_mann_whitney" },
+        { "valor": "2p", "rotulo": "Dois momentos pareados", "resultado": "t_wilcoxon_pareado" },
+        { "valor": "3i", "rotulo": "Três ou mais grupos independentes", "resultado": "t_kruskal_wallis" },
+        { "valor": "3p", "rotulo": "Três ou mais momentos pareados", "resultado": "t_friedman" }
+      ]
+    },
+    "n_c_pareado": {
+      "pergunta": "Os grupos são independentes ou pareados?",
+      "opcoes": [
+        { "valor": "independente", "rotulo": "Independentes (pessoas diferentes)", "proximo": "n_c_esperado" },
+        { "valor": "pareado2", "rotulo": "Pareados, dois momentos", "detalhe": "Ex.: adesão antes e depois da orientação", "resultado": "t_mcnemar" },
+        { "valor": "pareado3", "rotulo": "Pareados, três ou mais momentos", "resultado": "t_cochran_q" }
+      ]
+    },
+    "n_c_esperado": {
+      "pergunta": "A amostra é pequena ou algum grupo terá poucos eventos?",
+      "explicacao": "O qui-quadrado precisa de frequências esperadas adequadas: nenhuma abaixo de 1 e no máximo 20% das células abaixo de 5. Na análise o app confere isso nos seus dados e troca para Fisher se necessário.",
+      "opcoes": [
+        { "valor": "nao", "rotulo": "Não, há eventos suficientes", "resultado": "t_qui_quadrado" },
+        { "valor": "sim", "rotulo": "Sim, poucos casos ou eventos", "resultado": "t_fisher_exato" }
+      ]
+    },
+    "n_correlacao": {
+      "pergunta": "As duas variáveis são quantitativas com distribuição normal e relação em linha reta?",
+      "explicacao": "Faça um gráfico de dispersão: se os pontos seguem uma reta, sem valores extremos, Pearson. Se uma variável é ordinal, assimétrica ou a relação é curva, Spearman.",
+      "opcoes": [
+        { "valor": "sim", "rotulo": "Sim", "resultado": "t_pearson" },
+        { "valor": "nao", "rotulo": "Não, ou uma delas é ordinal", "resultado": "t_spearman" }
+      ]
+    },
+    "n_regressao": {
+      "pergunta": "Qual é o tipo do desfecho do modelo?",
+      "opcoes": [
+        { "valor": "quantitativo", "rotulo": "Quantitativo", "resultado": "t_regressao_linear" },
+        { "valor": "binario", "rotulo": "Binário (sim/não)", "proximo": "n_binario_freq" },
+        { "valor": "tempo", "rotulo": "Tempo até evento", "resultado": "t_cox" }
+      ]
+    },
+    "n_binario_freq": {
+      "pergunta": "Qual é o desenho e a frequência do desfecho?",
+      "explicacao": "Quando o desfecho é comum (10% ou mais), a odds ratio fica bem maior que a razão de prevalências ou o risco relativo, e costuma ser lida como se fosse risco. Em transversais e coortes com desfecho comum, prefira estimar RP ou RR.",
+      "opcoes": [
+        { "valor": "caso_controle", "rotulo": "Caso-controle", "resultado": "t_regressao_logistica" },
+        { "valor": "raro", "rotulo": "Coorte ou transversal com desfecho raro (< 10%)", "resultado": "t_regressao_logistica" },
+        { "valor": "comum", "rotulo": "Coorte ou transversal com desfecho comum (≥ 10%)", "resultado": "t_poisson_robusta" }
+      ]
+    },
+    "n_sobrevivencia": {
+      "pergunta": "Você quer comparar curvas entre grupos ou ajustar por vários fatores?",
+      "opcoes": [
+        { "valor": "comparar", "rotulo": "Comparar curvas entre grupos", "resultado": "t_kaplan_meier_logrank" },
+        { "valor": "ajustar", "rotulo": "Ajustar por vários fatores", "resultado": "t_cox" }
+      ]
+    },
+    "n_concordancia": {
+      "pergunta": "O que você quer avaliar?",
+      "opcoes": [
+        { "valor": "kappa", "rotulo": "Concordância entre avaliadores em categorias", "resultado": "t_kappa" },
+        { "valor": "icc", "rotulo": "Confiabilidade de medidas quantitativas", "resultado": "t_icc" },
+        { "valor": "metodos", "rotulo": "Concordância entre dois métodos de medida", "resultado": "t_bland_altman" },
+        { "valor": "diagnostico", "rotulo": "Desempenho de um teste diagnóstico", "resultado": "t_acuracia_roc" }
+      ]
+    }
+  }
+}

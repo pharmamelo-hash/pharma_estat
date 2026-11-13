@@ -1,0 +1,106 @@
+{
+  "id": "arvore_desenho",
+  "versao_base": "2026.11-rascunho",
+  "titulo": "Qual é o meu tipo de estudo?",
+  "raiz": "n_d_proposito",
+  "refs": ["r_grimes_2002_overview", "r_hulley_2013"],
+  "nos": {
+    "n_d_proposito": {
+      "pergunta": "O que o seu trabalho vai fazer?",
+      "explicacao": "A maioria dos TCC e TCR produz dados novos de pacientes ou prontuários. Revisões trabalham com artigos publicados. Validação prova que uma medida é confiável.",
+      "opcoes": [
+        { "valor": "dados", "rotulo": "Coletar ou analisar dados de pacientes ou registros", "proximo": "n_d_intervencao" },
+        { "valor": "sintese", "rotulo": "Reunir estudos já publicados", "proximo": "n_d_sintese" },
+        { "valor": "validacao", "rotulo": "Validar um método de laboratório ou um questionário", "proximo": "n_d_validacao" },
+        { "valor": "qualitativo", "rotulo": "Entender percepções e experiências, sem medir", "resultado": "d_qualitativo" }
+      ]
+    },
+    "n_d_intervencao": {
+      "pergunta": "O pesquisador vai interferir no que acontece com os participantes (ex.: decidir quem recebe um tratamento)?",
+      "explicacao": "Se o pesquisador decide a exposição (um medicamento, uma orientação, um protocolo), o estudo é experimental. Se apenas observa o que acontece ou já aconteceu, é observacional.",
+      "opcoes": [
+        { "valor": "sim", "rotulo": "Sim, o pesquisador define a intervenção", "detalhe": "Ex.: comparar dois esquemas de antibiótico", "proximo": "n_d_sorteio" },
+        { "valor": "nao", "rotulo": "Não, só observa", "detalhe": "Ex.: avaliar desfechos em prontuários", "proximo": "n_d_objetivo_obs" }
+      ]
+    },
+    "n_d_sorteio": {
+      "pergunta": "Quem recebe a intervenção será definido por sorteio?",
+      "explicacao": "Sorteio (randomização) é o que torna os grupos comparáveis. Implantar um serviço e comparar com o período anterior não é sorteio.",
+      "opcoes": [
+        { "valor": "sim", "rotulo": "Sim, por sorteio", "proximo": "n_d_unidade_sorteio" },
+        { "valor": "nao", "rotulo": "Não há sorteio", "proximo": "n_d_quase" }
+      ]
+    },
+    "n_d_unidade_sorteio": {
+      "pergunta": "Como será o sorteio?",
+      "opcoes": [
+        { "valor": "individuo", "rotulo": "Cada participante sorteado para um grupo", "resultado": "d_ecr_paralelo" },
+        { "valor": "sequencia", "rotulo": "Cada participante recebe todas as intervenções, em ordem sorteada", "resultado": "d_ecr_cruzado" },
+        { "valor": "grupo", "rotulo": "Grupos inteiros sorteados (enfermarias, hospitais)", "resultado": "d_ecr_cluster" }
+      ]
+    },
+    "n_d_quase": {
+      "pergunta": "Como o efeito será avaliado ao longo do tempo?",
+      "explicacao": "Com uma série longa de medidas mensais antes e depois (pelo menos alguns pontos de cada lado), dá para separar o efeito da tendência que já existia.",
+      "opcoes": [
+        { "valor": "serie", "rotulo": "Série longa de medidas antes e depois (ex.: mensais)", "resultado": "d_serie_temporal_interrompida" },
+        { "valor": "antes_depois", "rotulo": "Um período antes e um depois", "resultado": "d_quase_antes_depois" }
+      ]
+    },
+    "n_d_objetivo_obs": {
+      "pergunta": "Qual é o objetivo do estudo observacional?",
+      "opcoes": [
+        { "valor": "descrever", "rotulo": "Descrever, sem comparar grupos", "proximo": "n_d_descrever" },
+        { "valor": "associar", "rotulo": "Comparar grupos ou verificar associação", "proximo": "n_d_unidade" },
+        { "valor": "diagnostico", "rotulo": "Avaliar o desempenho de um teste diagnóstico", "resultado": "d_acuracia_diagnostica" },
+        { "valor": "predicao", "rotulo": "Criar ou validar um escore de risco", "resultado": "d_modelo_predicao" }
+      ]
+    },
+    "n_d_descrever": {
+      "pergunta": "O que será descrito?",
+      "opcoes": [
+        { "valor": "um", "rotulo": "Um paciente", "resultado": "d_relato_caso" },
+        { "valor": "serie", "rotulo": "Um grupo de pacientes com a mesma condição", "resultado": "d_serie_casos" },
+        { "valor": "prevalencia", "rotulo": "A frequência de algo numa população", "resultado": "d_transversal_descritivo" }
+      ]
+    },
+    "n_d_unidade": {
+      "pergunta": "Os dados são de cada indivíduo ou só agregados por grupo?",
+      "explicacao": "Agregado: você só tem totais por unidade, município ou mês (ex.: consumo de antimicrobianos por unidade).",
+      "opcoes": [
+        { "valor": "individual", "rotulo": "Dados de cada indivíduo", "proximo": "n_d_direcao" },
+        { "valor": "agregado", "rotulo": "Só dados agregados", "resultado": "d_ecologico" }
+      ]
+    },
+    "n_d_direcao": {
+      "pergunta": "Como exposição e desfecho se relacionam no tempo da coleta?",
+      "explicacao": "Exposição é o fator (ex.: uso de vancomicina); desfecho é o que acontece (ex.: lesão renal). No caso-controle você parte de quem já tem o desfecho; na coorte parte da exposição e acompanha.",
+      "opcoes": [
+        { "valor": "mesmo_tempo", "rotulo": "Medidos ao mesmo tempo", "resultado": "d_transversal_analitico" },
+        { "valor": "do_desfecho", "rotulo": "Parto de quem tem e de quem não tem o desfecho", "resultado": "d_caso_controle" },
+        { "valor": "da_exposicao", "rotulo": "Parto da exposição e acompanho até o desfecho", "proximo": "n_d_coorte" }
+      ]
+    },
+    "n_d_coorte": {
+      "pergunta": "O desfecho ainda vai acontecer ou já está registrado?",
+      "opcoes": [
+        { "valor": "futuro", "rotulo": "Vou acompanhar a partir de agora", "resultado": "d_coorte_prospectiva" },
+        { "valor": "passado", "rotulo": "Já aconteceu e está em prontuários ou sistemas", "resultado": "d_coorte_retrospectiva" }
+      ]
+    },
+    "n_d_sintese": {
+      "pergunta": "Qual é o tipo de pergunta da revisão?",
+      "opcoes": [
+        { "valor": "focada", "rotulo": "Pergunta focada (ex.: a intervenção X reduz Y?)", "resultado": "d_revisao_sistematica" },
+        { "valor": "ampla", "rotulo": "Mapear um tema amplo e suas lacunas", "resultado": "d_revisao_escopo" }
+      ]
+    },
+    "n_d_validacao": {
+      "pergunta": "O que será validado?",
+      "opcoes": [
+        { "valor": "analitico", "rotulo": "Método analítico de laboratório", "resultado": "d_validacao_analitica" },
+        { "valor": "instrumento", "rotulo": "Questionário ou escala", "resultado": "d_validacao_instrumento" }
+      ]
+    }
+  }
+}

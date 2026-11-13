@@ -1,0 +1,262 @@
+{
+  "versao_base": "2026.11-rascunho",
+  "regras": [
+    {
+      "id": "rv_desenho_ausente",
+      "gravidade": "alta",
+      "achado": "O desenho do estudo não foi definido.",
+      "recomendacao": "Defina o desenho com o assistente \"Qual é o meu tipo de estudo?\". Ele determina a medida de associação, os testes e a diretriz de relato.",
+      "refs": [
+        "r_grimes_2002_overview"
+      ]
+    },
+    {
+      "id": "rv_desfecho_primario",
+      "gravidade": "alta",
+      "achado": "Não há desfecho primário definido.",
+      "recomendacao": "Declare um único desfecho primário, com definição operacional e momento de medida. O cálculo amostral e a análise principal dependem dele.",
+      "refs": [
+        "r_hulley_2013"
+      ]
+    },
+    {
+      "id": "rv_cc_medida",
+      "gravidade": "alta",
+      "achado": "Estudo caso-controle com medida de risco ou prevalência.",
+      "recomendacao": "No caso-controle a proporção de casos é fixada pelo pesquisador, então não se estima incidência, risco relativo nem prevalência. Use a odds ratio (OR).",
+      "refs": [
+        "r_schulz_2002_casocontrole"
+      ]
+    },
+    {
+      "id": "rv_transversal_medida",
+      "gravidade": "alta",
+      "achado": "Estudo transversal com risco relativo ou hazard ratio.",
+      "recomendacao": "O transversal mede prevalência num momento: use razão de prevalências (RP). RR e HR exigem seguimento no tempo.",
+      "refs": [
+        "r_mann_2003",
+        "r_barros_2003"
+      ]
+    },
+    {
+      "id": "rv_or_desfecho_comum",
+      "gravidade": "media",
+      "achado": "Odds ratio com desfecho frequente em transversal, coorte ou ensaio.",
+      "recomendacao": "Com desfecho frequente (≥ 10%), a OR fica bem maior que a RP ou o RR e costuma ser lida como risco. Prefira RP/RR (regressão de Poisson com variância robusta) ou deixe claro que se trata de OR.",
+      "refs": [
+        "r_zou_2004",
+        "r_barros_2003"
+      ]
+    },
+    {
+      "id": "rv_hr_sem_tempo",
+      "gravidade": "alta",
+      "achado": "Hazard ratio planejado sem desfecho de tempo até o evento.",
+      "recomendacao": "O HR vem da análise de sobrevida (Cox) e exige o tempo até o evento e a censura de cada participante. Ajuste o desfecho ou a medida.",
+      "refs": [
+        "r_altman_1991"
+      ]
+    },
+    {
+      "id": "rv_teste_incompativel",
+      "gravidade": "alta",
+      "achado": "Os testes planejados não combinam com o tipo de desfecho e de grupos.",
+      "recomendacao": "Revise a escolha com o assistente \"Qual teste estatístico usar?\". Testes compatíveis com o que foi descrito: {sugestoes}.",
+      "refs": [
+        "r_altman_1991",
+        "r_field_2012"
+      ]
+    },
+    {
+      "id": "rv_sem_teste",
+      "gravidade": "media",
+      "achado": "Nenhum teste estatístico foi informado.",
+      "recomendacao": "Descreva na seção de análise quais testes serão usados para o desfecho primário e por quê.",
+      "refs": [
+        "r_altman_1991"
+      ]
+    },
+    {
+      "id": "rv_sem_amostra",
+      "gravidade": "alta",
+      "achado": "Estudo analítico ou experimental sem cálculo do tamanho amostral.",
+      "recomendacao": "Calcule o tamanho amostral para o desfecho primário, informando α, poder, efeito esperado e a fonte desse efeito. Sem isso, um resultado não significativo não pode ser interpretado.",
+      "refs": [
+        "r_hulley_2013",
+        "r_chow_2017"
+      ]
+    },
+    {
+      "id": "rv_censo",
+      "gravidade": "baixa",
+      "achado": "Amostra por censo (todos os casos do período), sem cálculo amostral.",
+      "recomendacao": "É aceitável quando o número de casos é limitado, mas informe o poder que esse n oferece para o efeito de interesse e discuta o risco de erro tipo II.",
+      "refs": [
+        "r_hulley_2013"
+      ]
+    },
+    {
+      "id": "rv_sem_fonte_efeito",
+      "gravidade": "media",
+      "achado": "O cálculo amostral não informa de onde veio o efeito esperado.",
+      "recomendacao": "Cite o estudo anterior, piloto ou critério clínico que justifica o efeito e o desvio-padrão ou as proporções usadas.",
+      "refs": [
+        "r_chow_2017"
+      ]
+    },
+    {
+      "id": "rv_sem_perdas",
+      "gravidade": "media",
+      "achado": "Não há previsão de perdas de seguimento.",
+      "recomendacao": "Em estudos com seguimento, acrescente as perdas previstas ao n: n final = n / (1 − perdas).",
+      "refs": [
+        "r_hulley_2013"
+      ]
+    },
+    {
+      "id": "rv_n_insuficiente",
+      "gravidade": "alta",
+      "achado": "O n planejado ({n_planejado}) é menor que o calculado ({n_calculado}).",
+      "recomendacao": "Aumente o período ou o número de centros, revise o efeito esperado, ou declare o estudo como exploratório e informe o poder real.",
+      "refs": [
+        "r_chow_2017"
+      ]
+    },
+    {
+      "id": "rv_epv",
+      "gravidade": "alta",
+      "achado": "Poucos eventos por variável no modelo de regressão ({epv} eventos por variável).",
+      "recomendacao": "Com menos de cerca de 10 eventos por variável o modelo fica instável. Reduza o número de variáveis, aumente a amostra ou procure apoio de um bioestatístico.",
+      "refs": [
+        "r_peduzzi_1996"
+      ]
+    },
+    {
+      "id": "rv_confundidores",
+      "gravidade": "media",
+      "achado": "Não há plano para controlar confundidores.",
+      "recomendacao": "Em estudos observacionais analíticos, liste os confundidores com base na literatura e diga como serão controlados (estratificação, pareamento ou regressão).",
+      "refs": [
+        "r_hulley_2013"
+      ]
+    },
+    {
+      "id": "rv_ecr_ocultacao",
+      "gravidade": "alta",
+      "achado": "Ensaio clínico sem ocultação da alocação.",
+      "recomendacao": "Descreva como a sequência será gerada e ocultada (central, envelopes opacos lacrados e numerados). Sem ocultação, a randomização perde a proteção contra viés de seleção.",
+      "refs": [
+        "r_consort_2025"
+      ]
+    },
+    {
+      "id": "rv_ecr_cegamento",
+      "gravidade": "media",
+      "achado": "Ensaio clínico sem cegamento previsto.",
+      "recomendacao": "Se cegar participantes for impossível, cegue ao menos o avaliador do desfecho e quem analisa os dados.",
+      "refs": [
+        "r_consort_2025"
+      ]
+    },
+    {
+      "id": "rv_ecr_itt",
+      "gravidade": "media",
+      "achado": "Ensaio clínico sem análise por intenção de tratar.",
+      "recomendacao": "Analise cada participante no grupo para o qual foi sorteado; a análise por protocolo pode entrar como secundária.",
+      "refs": [
+        "r_consort_2025"
+      ]
+    },
+    {
+      "id": "rv_quase_controle",
+      "gravidade": "media",
+      "achado": "Estudo antes e depois sem grupo controle.",
+      "recomendacao": "Sem controle, mudanças podem vir da tendência temporal, de outros eventos ou da regressão à média. Considere um grupo controle concorrente ou uma série temporal interrompida.",
+      "refs": [
+        "r_trend_2004",
+        "r_bernal_2017"
+      ]
+    },
+    {
+      "id": "rv_dados_faltantes",
+      "gravidade": "media",
+      "achado": "Estudo com dados de prontuário sem plano para dados faltantes.",
+      "recomendacao": "Defina antes como lidar com registros incompletos (critérios de exclusão, análise de casos completos, imputação) e informe a completude de cada variável.",
+      "refs": [
+        "r_record_2015"
+      ]
+    },
+    {
+      "id": "rv_multiplas",
+      "gravidade": "media",
+      "achado": "Várias comparações sem correção para múltiplos testes.",
+      "recomendacao": "Com 3 ou mais grupos ou vários desfechos, use testes com correção (Tukey, Holm) ou defina um único desfecho primário.",
+      "refs": [
+        "r_altman_1991"
+      ]
+    },
+    {
+      "id": "rv_diretriz_ausente",
+      "gravidade": "baixa",
+      "achado": "Nenhuma diretriz de relato foi citada.",
+      "recomendacao": "Use a diretriz indicada para o desenho ({diretriz}) ao escrever o projeto e o artigo.",
+      "refs": [
+        "r_strobe_2007"
+      ]
+    },
+    {
+      "id": "rv_diretriz_diferente",
+      "gravidade": "baixa",
+      "achado": "A diretriz de relato citada não é a indicada para o desenho.",
+      "recomendacao": "Para este desenho a diretriz indicada é {diretriz}.",
+      "refs": [
+        "r_strobe_2007"
+      ]
+    },
+    {
+      "id": "rv_cep",
+      "gravidade": "alta",
+      "achado": "Pesquisa com seres humanos sem previsão de submissão ao Comitê de Ética.",
+      "recomendacao": "Pesquisas com seres humanos, incluindo dados de prontuário, devem ser submetidas ao CEP pela Plataforma Brasil antes da coleta.",
+      "refs": [
+        "r_cns_466_2012"
+      ]
+    },
+    {
+      "id": "rv_ecologico_individual",
+      "gravidade": "media",
+      "achado": "Conclusões sobre indivíduos a partir de dados agregados.",
+      "recomendacao": "Em estudos ecológicos, associações entre grupos não valem para os indivíduos (falácia ecológica). Restrinja as conclusões ao nível dos grupos.",
+      "refs": [
+        "r_morgenstern_1995"
+      ]
+    },
+    {
+      "id": "rv_descritivo_associacao",
+      "gravidade": "alta",
+      "achado": "Desenho descritivo com objetivo de testar associação.",
+      "recomendacao": "Relato e série de casos não têm grupo de comparação. Reformule o objetivo como descritivo ou escolha um desenho analítico.",
+      "refs": [
+        "r_grimes_2002_descritivos"
+      ]
+    },
+    {
+      "id": "rv_predicao",
+      "gravidade": "media",
+      "achado": "Modelo de predição exige métodos específicos.",
+      "recomendacao": "Planeje validação interna, calibração e discriminação, siga a TRIPOD+AI e procure apoio de um bioestatístico.",
+      "refs": [
+        "r_tripod_ai_2024"
+      ]
+    },
+    {
+      "id": "rv_qualitativo",
+      "gravidade": "info",
+      "achado": "Desenho qualitativo: fora do escopo da análise estatística.",
+      "recomendacao": "A revisão estatística não se aplica. Use a COREQ para o relato.",
+      "refs": [
+        "r_coreq_2007"
+      ]
+    }
+  ]
+}

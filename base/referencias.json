@@ -1,0 +1,296 @@
+{
+  "versao_base": "2026.11-rascunho",
+  "nota": "conferida = data em que a citação foi checada em fonte bibliográfica; 'pendente' = conferir antes da publicação (tarefa 11).",
+  "referencias": [
+    {
+      "id": "r_hulley_2013",
+      "tipo": "livro",
+      "citacao": "Hulley SB, Cummings SR, Browner WS, Grady DG, Newman TB. Designing Clinical Research. 4th ed. Philadelphia: Lippincott Williams & Wilkins; 2013.",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_grimes_2002_overview",
+      "tipo": "artigo",
+      "citacao": "Grimes DA, Schulz KF. An overview of clinical research: the lay of the land. Lancet. 2002;359(9300):57-61.",
+      "doi": "10.1016/S0140-6736(02)07283-5",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_grimes_2002_descritivos",
+      "tipo": "artigo",
+      "citacao": "Grimes DA, Schulz KF. Descriptive studies: what they can and cannot do. Lancet. 2002;359(9301):145-9.",
+      "doi": "10.1016/S0140-6736(02)07373-7",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_grimes_2002_coorte",
+      "tipo": "artigo",
+      "citacao": "Grimes DA, Schulz KF. Cohort studies: marching towards outcomes. Lancet. 2002;359(9303):341-5.",
+      "doi": "10.1016/S0140-6736(02)07500-1",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_schulz_2002_casocontrole",
+      "tipo": "artigo",
+      "citacao": "Schulz KF, Grimes DA. Case-control studies: research in reverse. Lancet. 2002;359(9304):431-4.",
+      "doi": "10.1016/S0140-6736(02)07605-5",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_mann_2003",
+      "tipo": "artigo",
+      "citacao": "Mann CJ. Observational research methods. Research design II: cohort, cross sectional, and case-control studies. Emerg Med J. 2003;20(1):54-60.",
+      "doi": "10.1136/emj.20.1.54",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_morgenstern_1995",
+      "tipo": "artigo",
+      "citacao": "Morgenstern H. Ecologic studies in epidemiology: concepts, principles, and methods. Annu Rev Public Health. 1995;16:61-81.",
+      "doi": "10.1146/annurev.pu.16.050195.000425",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_bernal_2017",
+      "tipo": "artigo",
+      "citacao": "Bernal JL, Cummins S, Gasparrini A. Interrupted time series regression for the evaluation of public health interventions: a tutorial. Int J Epidemiol. 2017;46(1):348-55.",
+      "doi": "10.1093/ije/dyw098",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_strobe_2007",
+      "tipo": "diretriz",
+      "citacao": "von Elm E, Altman DG, Egger M, Pocock SJ, Gøtzsche PC, Vandenbroucke JP; STROBE Initiative. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: guidelines for reporting observational studies. Lancet. 2007;370(9596):1453-7.",
+      "doi": "10.1016/S0140-6736(07)61602-X",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_record_2015",
+      "tipo": "diretriz",
+      "citacao": "Benchimol EI, Smeeth L, Guttmann A, Harron K, Moher D, Petersen I, et al. The REporting of studies Conducted using Observational Routinely-collected health Data (RECORD) statement. PLoS Med. 2015;12(10):e1001885.",
+      "doi": "10.1371/journal.pmed.1001885",
+      "conferida": "2026-11-01"
+    },
+    {
+      "id": "r_care_2013",
+      "tipo": "diretriz",
+      "citacao": "Gagnier JJ, Kienle G, Altman DG, Moher D, Sox H, Riley D; CARE Group. The CARE guidelines: consensus-based clinical case reporting guideline development. J Med Case Rep. 2013;7:223.",
+      "doi": "10.1186/1752-1947-7-223",
+      "conferida": "2026-11-01"
+    },
+    {
+      "id": "r_consort_2025",
+      "tipo": "diretriz",
+      "citacao": "Hopewell S, Chan AW, Collins GS, Hróbjartsson A, Moher D, Schulz KF, et al. CONSORT 2025 statement: updated guideline for reporting randomised trials. BMJ. 2025;389:e081123.",
+      "doi": "10.1136/bmj-2024-081123",
+      "conferida": "2026-11-01"
+    },
+    {
+      "id": "r_consort_crossover_2019",
+      "tipo": "diretriz",
+      "citacao": "Dwan K, Li T, Altman DG, Elbourne D. CONSORT 2010 statement: extension to randomised crossover trials. BMJ. 2019;366:l4378.",
+      "doi": "10.1136/bmj.l4378",
+      "conferida": "2026-11-01"
+    },
+    {
+      "id": "r_consort_cluster_2012",
+      "tipo": "diretriz",
+      "citacao": "Campbell MK, Piaggio G, Elbourne DR, Altman DG; CONSORT Group. Consort 2010 statement: extension to cluster randomised trials. BMJ. 2012;345:e5661.",
+      "doi": "10.1136/bmj.e5661",
+      "conferida": "2026-11-01"
+    },
+    {
+      "id": "r_trend_2004",
+      "tipo": "diretriz",
+      "citacao": "Des Jarlais DC, Lyles C, Crepaz N; TREND Group. Improving the reporting quality of nonrandomized evaluations of behavioral and public health interventions: the TREND statement. Am J Public Health. 2004;94(3):361-6.",
+      "doi": "10.2105/AJPH.94.3.361",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_stard_2015",
+      "tipo": "diretriz",
+      "citacao": "Bossuyt PM, Reitsma JB, Bruns DE, Gatsonis CA, Glasziou PP, Irwig L, et al. STARD 2015: an updated list of essential items for reporting diagnostic accuracy studies. BMJ. 2015;351:h5527.",
+      "doi": "10.1136/bmj.h5527",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_tripod_ai_2024",
+      "tipo": "diretriz",
+      "citacao": "Collins GS, Moons KGM, Dhiman P, Riley RD, Beam AL, Van Calster B, et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. BMJ. 2024;385:e078378.",
+      "doi": "10.1136/bmj-2023-078378",
+      "conferida": "2026-11-01"
+    },
+    {
+      "id": "r_prisma_2020",
+      "tipo": "diretriz",
+      "citacao": "Page MJ, McKenzie JE, Bossuyt PM, Boutron I, Hoffmann TC, Mulrow CD, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 2021;372:n71.",
+      "doi": "10.1136/bmj.n71",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_prisma_scr_2018",
+      "tipo": "diretriz",
+      "citacao": "Tricco AC, Lillie E, Zarin W, O'Brien KK, Colquhoun H, Levac D, et al. PRISMA Extension for Scoping Reviews (PRISMA-ScR): checklist and explanation. Ann Intern Med. 2018;169(7):467-73.",
+      "doi": "10.7326/M18-0850",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_coreq_2007",
+      "tipo": "diretriz",
+      "citacao": "Tong A, Sainsbury P, Craig J. Consolidated criteria for reporting qualitative research (COREQ): a 32-item checklist for interviews and focus groups. Int J Qual Health Care. 2007;19(6):349-57.",
+      "doi": "10.1093/intqhc/mzm042",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_cosmin_2010",
+      "tipo": "diretriz",
+      "citacao": "Mokkink LB, Terwee CB, Patrick DL, Alonso J, Stratford PW, Knol DL, et al. The COSMIN study reached international consensus on taxonomy, terminology, and definitions of measurement properties for health-related patient-reported outcomes. J Clin Epidemiol. 2010;63(7):737-45.",
+      "doi": "10.1016/j.jclinepi.2010.02.006",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_ich_q2r2_2023",
+      "tipo": "norma",
+      "citacao": "International Council for Harmonisation. ICH Q2(R2): Validation of Analytical Procedures. Adotada no Step 4 em 1 nov. 2023.",
+      "conferida": "2026-11-01"
+    },
+    {
+      "id": "r_anvisa_rdc166_2017",
+      "tipo": "norma",
+      "citacao": "Brasil. Agência Nacional de Vigilância Sanitária. Resolução RDC nº 166, de 24 de julho de 2017: dispõe sobre a validação de métodos analíticos. Diário Oficial da União; 2017.",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_altman_1991",
+      "tipo": "livro",
+      "citacao": "Altman DG. Practical Statistics for Medical Research. London: Chapman & Hall; 1991.",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_field_2012",
+      "tipo": "livro",
+      "citacao": "Field A, Miles J, Field Z. Discovering Statistics Using R. London: Sage; 2012.",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_agresti_2013",
+      "tipo": "livro",
+      "citacao": "Agresti A. Categorical Data Analysis. 3rd ed. Hoboken: Wiley; 2013.",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_fleiss_2003",
+      "tipo": "livro",
+      "citacao": "Fleiss JL, Levin B, Paik MC. Statistical Methods for Rates and Proportions. 3rd ed. Hoboken: Wiley; 2003.",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_chow_2017",
+      "tipo": "livro",
+      "citacao": "Chow SC, Shao J, Wang H, Lokhnygina Y. Sample Size Calculations in Clinical Research. 3rd ed. Boca Raton: CRC Press; 2017.",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_schoenfeld_1983",
+      "tipo": "artigo",
+      "citacao": "Schoenfeld DA. Sample-size formula for the proportional-hazards regression model. Biometrics. 1983;39(2):499-503.",
+      "doi": "10.2307/2531021",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_lenth_1989",
+      "tipo": "artigo",
+      "citacao": "Lenth RV. Algorithm AS 243: cumulative distribution function of the non-central t distribution. J R Stat Soc Ser C Appl Stat. 1989;38(1):185-9.",
+      "doi": "10.2307/2347693",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_zou_2004",
+      "tipo": "artigo",
+      "citacao": "Zou G. A modified Poisson regression approach to prospective studies with binary data. Am J Epidemiol. 2004;159(7):702-6.",
+      "doi": "10.1093/aje/kwh090",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_barros_2003",
+      "tipo": "artigo",
+      "citacao": "Barros AJ, Hirakata VN. Alternatives for logistic regression in cross-sectional studies: an empirical comparison of models that directly estimate the prevalence ratio. BMC Med Res Methodol. 2003;3:21.",
+      "doi": "10.1186/1471-2288-3-21",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_delacre_2017",
+      "tipo": "artigo",
+      "citacao": "Delacre M, Lakens D, Leys C. Why psychologists should by default use Welch's t-test instead of Student's t-test. Int Rev Soc Psychol. 2017;30(1):92-101.",
+      "doi": "10.5334/irsp.82",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_bland_altman_1986",
+      "tipo": "artigo",
+      "citacao": "Bland JM, Altman DG. Statistical methods for assessing agreement between two methods of clinical measurement. Lancet. 1986;1(8476):307-10.",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_koo_li_2016",
+      "tipo": "artigo",
+      "citacao": "Koo TK, Li MY. A guideline of selecting and reporting intraclass correlation coefficients for reliability research. J Chiropr Med. 2016;15(2):155-63.",
+      "doi": "10.1016/j.jcm.2016.02.012",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_landis_koch_1977",
+      "tipo": "artigo",
+      "citacao": "Landis JR, Koch GG. The measurement of observer agreement for categorical data. Biometrics. 1977;33(1):159-74.",
+      "doi": "10.2307/2529310",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_wasserstein_2016",
+      "tipo": "artigo",
+      "citacao": "Wasserstein RL, Lazar NA. The ASA statement on p-values: context, process, and purpose. Am Stat. 2016;70(2):129-33.",
+      "doi": "10.1080/00031305.2016.1154108",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_peduzzi_1996",
+      "tipo": "artigo",
+      "citacao": "Peduzzi P, Concato J, Kemper E, Holford TR, Feinstein AR. A simulation study of the number of events per variable in logistic regression analysis. J Clin Epidemiol. 1996;49(12):1373-9.",
+      "doi": "10.1016/S0895-4356(96)00236-3",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_r_core",
+      "tipo": "software",
+      "citacao": "R Core Team. R: A language and environment for statistical computing. Vienna: R Foundation for Statistical Computing; 2026. Versão 4.6.0 (via webR).",
+      "conferida": "2026-11-01"
+    },
+    {
+      "id": "r_cns_466_2012",
+      "tipo": "norma",
+      "citacao": "Brasil. Conselho Nacional de Saúde. Resolução nº 466, de 12 de dezembro de 2012: aprova diretrizes e normas regulamentadoras de pesquisas envolvendo seres humanos. Diário Oficial da União; 2013.",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_barnett_2005",
+      "tipo": "artigo",
+      "citacao": "Barnett AG, van der Pols JC, Dobson AJ. Regression to the mean: what it is and how to deal with it. Int J Epidemiol. 2005;34(1):215-20.",
+      "doi": "10.1093/ije/dyh299",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_altman_bland_1994",
+      "tipo": "artigo",
+      "citacao": "Altman DG, Bland JM. Diagnostic tests 2: predictive values. BMJ. 1994;309(6947):102.",
+      "doi": "10.1136/bmj.309.6947.102",
+      "conferida": "pendente"
+    },
+    {
+      "id": "r_charig_1986",
+      "tipo": "artigo",
+      "citacao": "Charig CR, Webb DR, Payne SR, Wickham JE. Comparison of treatment of renal calculi by open surgery, percutaneous nephrolithotomy, and extracorporeal shockwave lithotripsy. BMJ. 1986;292(6524):879-82.",
+      "doi": "10.1136/bmj.292.6524.879",
+      "conferida": "pendente"
+    }
+  ]
+}

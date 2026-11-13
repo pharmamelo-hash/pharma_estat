@@ -1,0 +1,328 @@
+{
+  "versao_base": "2026.11-rascunho",
+  "nota_geral": "Todos os cálculos supõem teste bilateral e grupos de mesmo tamanho. O resultado é arredondado para cima e, depois, acrescido das perdas previstas: n final = n / (1 − perdas).",
+  "calculos": [
+    {
+      "id": "a_proporcao",
+      "nome": "Estimar uma proporção (prevalência)",
+      "quando_usar": "Estudos descritivos e transversais que querem estimar uma frequência com uma margem de erro.",
+      "testes_relacionados": [],
+      "desenhos_relacionados": [
+        "d_transversal_descritivo",
+        "d_serie_casos"
+      ],
+      "formula": "n_0 = \\frac{z_{1-\\alpha/2}^2 \\, p(1-p)}{e^2} \\qquad n = \\frac{n_0}{1 + \\frac{n_0 - 1}{N}}",
+      "parametros": [
+        {
+          "id": "p",
+          "rotulo": "Proporção esperada",
+          "tipo": "proporcao",
+          "min": 0.001,
+          "max": 0.999,
+          "padrao": 0.5,
+          "ajuda": "Use estudos anteriores. Sem informação, 0,5 dá o maior n (cenário conservador)."
+        },
+        {
+          "id": "e",
+          "rotulo": "Margem de erro (absoluta)",
+          "tipo": "proporcao",
+          "min": 0.005,
+          "max": 0.3,
+          "padrao": 0.05,
+          "ajuda": "0,05 = ±5 pontos percentuais."
+        },
+        {
+          "id": "confianca",
+          "rotulo": "Nível de confiança",
+          "tipo": "proporcao",
+          "min": 0.8,
+          "max": 0.999,
+          "padrao": 0.95
+        },
+        {
+          "id": "N",
+          "rotulo": "Tamanho da população (opcional)",
+          "tipo": "inteiro",
+          "min": 1,
+          "max": 100000000,
+          "padrao": null,
+          "ajuda": "Preencha só se a população for finita e conhecida (ex.: 800 internações no período)."
+        }
+      ],
+      "refs": [
+        "r_fleiss_2003",
+        "r_hulley_2013"
+      ],
+      "formula_texto": "n₀ = z²·p·(1 − p) / e²    e, com população finita N:  n = n₀ / [1 + (n₀ − 1)/N]"
+    },
+    {
+      "id": "a_duas_proporcoes",
+      "nome": "Comparar duas proporções",
+      "quando_usar": "Desfecho binário comparado entre dois grupos independentes (coorte, ensaio clínico, transversal analítico).",
+      "testes_relacionados": [
+        "t_qui_quadrado",
+        "t_fisher_exato"
+      ],
+      "desenhos_relacionados": [
+        "d_ecr_paralelo",
+        "d_coorte_prospectiva",
+        "d_coorte_retrospectiva",
+        "d_transversal_analitico",
+        "d_quase_antes_depois"
+      ],
+      "formula": "n = \\frac{\\left[z_{1-\\alpha/2}\\sqrt{2\\bar p \\bar q} + z_{1-\\beta}\\sqrt{p_1 q_1 + p_2 q_2}\\right]^2}{(p_1 - p_2)^2} \\;\\text{ por grupo}",
+      "equivalente_r": "power.prop.test(p1 = , p2 = , sig.level = , power = )",
+      "parametros": [
+        {
+          "id": "p1",
+          "rotulo": "Proporção no grupo 1",
+          "tipo": "proporcao",
+          "min": 0.001,
+          "max": 0.999,
+          "padrao": 0.3
+        },
+        {
+          "id": "p2",
+          "rotulo": "Proporção no grupo 2",
+          "tipo": "proporcao",
+          "min": 0.001,
+          "max": 0.999,
+          "padrao": 0.15
+        },
+        {
+          "id": "alfa",
+          "rotulo": "Nível de significância (α)",
+          "tipo": "proporcao",
+          "min": 0.001,
+          "max": 0.2,
+          "padrao": 0.05
+        },
+        {
+          "id": "poder",
+          "rotulo": "Poder (1 − β)",
+          "tipo": "proporcao",
+          "min": 0.5,
+          "max": 0.99,
+          "padrao": 0.8
+        }
+      ],
+      "refs": [
+        "r_fleiss_2003",
+        "r_chow_2017"
+      ],
+      "formula_texto": "n por grupo = [ z(1−α/2)·√(2·p̄·q̄) + z(1−β)·√(p₁q₁ + p₂q₂) ]² / (p₁ − p₂)²,  com p̄ = (p₁ + p₂)/2 e q = 1 − p"
+    },
+    {
+      "id": "a_duas_medias",
+      "nome": "Comparar duas médias (grupos independentes)",
+      "quando_usar": "Desfecho quantitativo comparado entre dois grupos independentes.",
+      "testes_relacionados": [
+        "t_t_welch",
+        "t_mann_whitney"
+      ],
+      "desenhos_relacionados": [
+        "d_ecr_paralelo",
+        "d_coorte_prospectiva",
+        "d_coorte_retrospectiva",
+        "d_transversal_analitico"
+      ],
+      "formula": "\\text{poder} = P\\left(T_{\\nu,\\,\\delta} > t_{1-\\alpha/2,\\,\\nu}\\right),\\; \\nu = 2(n-1),\\; \\delta = \\frac{\\Delta}{\\sigma}\\sqrt{n/2}",
+      "equivalente_r": "power.t.test(delta = , sd = , sig.level = , power = )",
+      "observacao": "Usa a distribuição t não central (cálculo exato, igual ao do R). Para Mann-Whitney, uma regra conservadora é acrescentar cerca de 15% ao n.",
+      "parametros": [
+        {
+          "id": "delta",
+          "rotulo": "Diferença mínima relevante (Δ)",
+          "tipo": "positivo",
+          "min": 1e-06,
+          "max": 1000000,
+          "padrao": 5,
+          "ajuda": "Na unidade do desfecho (ex.: 5 dias)."
+        },
+        {
+          "id": "dp",
+          "rotulo": "Desvio-padrão esperado (σ)",
+          "tipo": "positivo",
+          "min": 1e-06,
+          "max": 1000000,
+          "padrao": 10,
+          "ajuda": "De estudo piloto ou da literatura."
+        },
+        {
+          "id": "alfa",
+          "rotulo": "Nível de significância (α)",
+          "tipo": "proporcao",
+          "min": 0.001,
+          "max": 0.2,
+          "padrao": 0.05
+        },
+        {
+          "id": "poder",
+          "rotulo": "Poder (1 − β)",
+          "tipo": "proporcao",
+          "min": 0.5,
+          "max": 0.99,
+          "padrao": 0.8
+        }
+      ],
+      "refs": [
+        "r_chow_2017",
+        "r_lenth_1989"
+      ],
+      "formula_texto": "n por grupo: menor n em que P(T(ν, δ) > t(1−α/2, ν)) ≥ poder, com ν = 2(n − 1) e δ = (Δ/σ)·√(n/2)  [t não central]"
+    },
+    {
+      "id": "a_media_pareada",
+      "nome": "Comparar médias pareadas (antes e depois)",
+      "quando_usar": "Desfecho quantitativo medido duas vezes nos mesmos participantes.",
+      "testes_relacionados": [
+        "t_t_pareado",
+        "t_wilcoxon_pareado"
+      ],
+      "desenhos_relacionados": [
+        "d_quase_antes_depois",
+        "d_ecr_cruzado"
+      ],
+      "formula": "\\text{poder} = P\\left(T_{\\nu,\\,\\delta} > t_{1-\\alpha/2,\\,\\nu}\\right),\\; \\nu = n-1,\\; \\delta = \\frac{\\Delta}{\\sigma_d}\\sqrt{n}",
+      "equivalente_r": "power.t.test(delta = , sd = , sig.level = , power = , type = 'paired')",
+      "parametros": [
+        {
+          "id": "delta",
+          "rotulo": "Diferença média esperada (Δ)",
+          "tipo": "positivo",
+          "min": 1e-06,
+          "max": 1000000,
+          "padrao": 5
+        },
+        {
+          "id": "dp",
+          "rotulo": "Desvio-padrão das diferenças (σd)",
+          "tipo": "positivo",
+          "min": 1e-06,
+          "max": 1000000,
+          "padrao": 10,
+          "ajuda": "DP das diferenças (depois − antes), não de cada medida."
+        },
+        {
+          "id": "alfa",
+          "rotulo": "Nível de significância (α)",
+          "tipo": "proporcao",
+          "min": 0.001,
+          "max": 0.2,
+          "padrao": 0.05
+        },
+        {
+          "id": "poder",
+          "rotulo": "Poder (1 − β)",
+          "tipo": "proporcao",
+          "min": 0.5,
+          "max": 0.99,
+          "padrao": 0.8
+        }
+      ],
+      "refs": [
+        "r_chow_2017",
+        "r_lenth_1989"
+      ],
+      "formula_texto": "n de pares: menor n em que P(T(ν, δ) > t(1−α/2, ν)) ≥ poder, com ν = n − 1 e δ = (Δ/σd)·√n  [t não central]"
+    },
+    {
+      "id": "a_correlacao",
+      "nome": "Detectar uma correlação",
+      "quando_usar": "Testar se a correlação entre duas variáveis quantitativas é diferente de zero.",
+      "testes_relacionados": [
+        "t_pearson",
+        "t_spearman"
+      ],
+      "desenhos_relacionados": [
+        "d_transversal_analitico",
+        "d_ecologico"
+      ],
+      "formula": "n = \\left(\\frac{z_{1-\\alpha/2} + z_{1-\\beta}}{C}\\right)^2 + 3, \\quad C = \\tfrac{1}{2}\\ln\\frac{1+r}{1-r}",
+      "parametros": [
+        {
+          "id": "r",
+          "rotulo": "Correlação esperada (r)",
+          "tipo": "proporcao",
+          "min": 0.01,
+          "max": 0.99,
+          "padrao": 0.3
+        },
+        {
+          "id": "alfa",
+          "rotulo": "Nível de significância (α)",
+          "tipo": "proporcao",
+          "min": 0.001,
+          "max": 0.2,
+          "padrao": 0.05
+        },
+        {
+          "id": "poder",
+          "rotulo": "Poder (1 − β)",
+          "tipo": "proporcao",
+          "min": 0.5,
+          "max": 0.99,
+          "padrao": 0.8
+        }
+      ],
+      "refs": [
+        "r_hulley_2013"
+      ],
+      "formula_texto": "n = [ (z(1−α/2) + z(1−β)) / C ]² + 3,   C = ½·ln[(1 + r)/(1 − r)]"
+    },
+    {
+      "id": "a_sobrevivencia",
+      "nome": "Comparar sobrevida (hazard ratio)",
+      "quando_usar": "Tempo até evento comparado entre dois grupos (log-rank ou Cox).",
+      "testes_relacionados": [
+        "t_kaplan_meier_logrank",
+        "t_cox"
+      ],
+      "desenhos_relacionados": [
+        "d_coorte_prospectiva",
+        "d_coorte_retrospectiva",
+        "d_ecr_paralelo"
+      ],
+      "formula": "d = \\frac{(z_{1-\\alpha/2} + z_{1-\\beta})^2}{\\pi(1-\\pi)\\,(\\ln HR)^2}, \\quad n = \\frac{d}{P(\\text{evento})}",
+      "observacao": "d = número de eventos necessários (total), com alocação 1:1 (π = 0,5).",
+      "parametros": [
+        {
+          "id": "hr",
+          "rotulo": "Hazard ratio esperado",
+          "tipo": "positivo",
+          "min": 0.05,
+          "max": 20,
+          "padrao": 0.6
+        },
+        {
+          "id": "p_evento",
+          "rotulo": "Proporção esperada de eventos no seguimento",
+          "tipo": "proporcao",
+          "min": 0.01,
+          "max": 1,
+          "padrao": 0.4
+        },
+        {
+          "id": "alfa",
+          "rotulo": "Nível de significância (α)",
+          "tipo": "proporcao",
+          "min": 0.001,
+          "max": 0.2,
+          "padrao": 0.05
+        },
+        {
+          "id": "poder",
+          "rotulo": "Poder (1 − β)",
+          "tipo": "proporcao",
+          "min": 0.5,
+          "max": 0.99,
+          "padrao": 0.8
+        }
+      ],
+      "refs": [
+        "r_schoenfeld_1983"
+      ],
+      "formula_texto": "eventos d = (z(1−α/2) + z(1−β))² / [0,25·(ln HR)²];   n total = d / P(evento)"
+    }
+  ]
+}

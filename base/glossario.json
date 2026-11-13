@@ -1,0 +1,382 @@
+{
+  "versao_base": "2026.11-rascunho",
+  "refs": [
+    "r_altman_1991",
+    "r_hulley_2013",
+    "r_wasserstein_2016"
+  ],
+  "termos": [
+    {
+      "id": "g_ajuste",
+      "termo": "Ajuste (análise multivariável)",
+      "definicao": "Estimar a associação de uma exposição mantendo outras variáveis constantes no modelo.",
+      "exemplo": "OR ajustada por idade e gravidade."
+    },
+    {
+      "id": "g_amostra",
+      "termo": "Amostra",
+      "definicao": "Subconjunto da população efetivamente estudado.",
+      "exemplo": "120 pacientes com sepse internados no hospital em 2025."
+    },
+    {
+      "id": "g_amostra_de_conveniencia",
+      "termo": "Amostra de conveniência",
+      "definicao": "Participantes incluídos por facilidade de acesso, sem sorteio.",
+      "exemplo": "Todos os pacientes atendidos no ambulatório num mês."
+    },
+    {
+      "id": "g_amostragem_probabilistica",
+      "termo": "Amostragem probabilística",
+      "definicao": "Cada indivíduo tem chance conhecida de ser selecionado.",
+      "exemplo": "Sorteio de prontuários a partir da lista de internações."
+    },
+    {
+      "id": "g_amostras_independentes",
+      "termo": "Amostras independentes",
+      "definicao": "Grupos formados por pessoas diferentes, sem relação entre si.",
+      "exemplo": "Pacientes do hospital A × hospital B."
+    },
+    {
+      "id": "g_amostras_pareadas",
+      "termo": "Amostras pareadas",
+      "definicao": "Medidas relacionadas: mesma pessoa em dois momentos ou pares formados de propósito.",
+      "exemplo": "Creatinina antes e depois do tratamento."
+    },
+    {
+      "id": "g_assimetria",
+      "termo": "Assimetria",
+      "definicao": "Distribuição com cauda mais longa para um lado.",
+      "exemplo": "Tempo de internação: muitos curtos e poucos muito longos."
+    },
+    {
+      "id": "g_cegamento",
+      "termo": "Cegamento",
+      "definicao": "Ocultar o grupo de alocação de participantes, profissionais ou avaliadores.",
+      "exemplo": "Avaliador do desfecho não sabe o tratamento."
+    },
+    {
+      "id": "g_censura",
+      "termo": "Censura",
+      "definicao": "Participante sem o evento até o fim do seu seguimento; contribui com o tempo observado.",
+      "exemplo": "Paciente transferido no 10º dia sem óbito."
+    },
+    {
+      "id": "g_comparacoes_multiplas",
+      "termo": "Comparações múltiplas",
+      "definicao": "Fazer vários testes aumenta a chance de algum falso positivo; exige correção.",
+      "exemplo": "Correção de Holm ou de Bonferroni."
+    },
+    {
+      "id": "g_confundidor",
+      "termo": "Confundidor",
+      "definicao": "Variável associada à exposição e ao desfecho, que distorce a associação se não for controlada.",
+      "exemplo": "Gravidade da doença ao comparar antimicrobianos."
+    },
+    {
+      "id": "g_confundimento_por_indicacao",
+      "termo": "Confundimento por indicação",
+      "definicao": "O motivo de prescrever o tratamento também influencia o desfecho.",
+      "exemplo": "Pacientes mais graves recebem o antimicrobiano de largo espectro."
+    },
+    {
+      "id": "g_curva_roc",
+      "termo": "Curva ROC",
+      "definicao": "Gráfico de sensibilidade × (1 − especificidade) em todos os pontos de corte; a área (AUC) resume o desempenho.",
+      "exemplo": "AUC 0,85."
+    },
+    {
+      "id": "g_dados_faltantes",
+      "termo": "Dados faltantes",
+      "definicao": "Valores ausentes; podem gerar viés se não forem aleatórios.",
+      "exemplo": "Exame não coletado nos pacientes mais graves."
+    },
+    {
+      "id": "g_desfecho",
+      "termo": "Desfecho",
+      "definicao": "Variável que o estudo quer explicar ou comparar (variável dependente).",
+      "exemplo": "Lesão renal aguda em 7 dias."
+    },
+    {
+      "id": "g_desvio_padrao",
+      "termo": "Desvio-padrão",
+      "definicao": "Medida de dispersão em torno da média, na mesma unidade dos dados.",
+      "exemplo": "Idade média 58 (DP 12) anos."
+    },
+    {
+      "id": "g_diretriz_de_relato",
+      "termo": "Diretriz de relato",
+      "definicao": "Lista de itens que o artigo deve informar, específica para cada desenho (rede EQUATOR).",
+      "exemplo": "STROBE, CONSORT, STARD, PRISMA."
+    },
+    {
+      "id": "g_distribuicao_normal",
+      "termo": "Distribuição normal",
+      "definicao": "Distribuição simétrica em forma de sino, definida pela média e pelo desvio-padrão.",
+      "exemplo": "Altura de adultos tende a ser aproximadamente normal."
+    },
+    {
+      "id": "g_erro_tipo_i",
+      "termo": "Erro tipo I",
+      "definicao": "Concluir que há efeito quando não há (falso positivo).",
+      "exemplo": "Declarar um fármaco eficaz por acaso."
+    },
+    {
+      "id": "g_erro_tipo_ii",
+      "termo": "Erro tipo II (β)",
+      "definicao": "Não detectar um efeito que existe (falso negativo).",
+      "exemplo": "Estudo pequeno demais conclui que não há diferença."
+    },
+    {
+      "id": "g_especificidade",
+      "termo": "Especificidade",
+      "definicao": "Proporção de não doentes que o teste identifica como negativos.",
+      "exemplo": "Especificidade de 90%: 10 falsos positivos a cada 100 sadios."
+    },
+    {
+      "id": "g_eventos_por_variavel",
+      "termo": "Eventos por variável",
+      "definicao": "Número de eventos do desfecho dividido pelo número de preditores; poucos eventos geram modelos instáveis.",
+      "exemplo": "Cerca de 10 eventos por variável na logística."
+    },
+    {
+      "id": "g_exposicao",
+      "termo": "Exposição",
+      "definicao": "Fator cuja relação com o desfecho se investiga (variável independente).",
+      "exemplo": "Uso de vancomicina."
+    },
+    {
+      "id": "g_frequencia_esperada",
+      "termo": "Frequência esperada",
+      "definicao": "Contagem esperada em cada célula da tabela se não houvesse associação; base do qui-quadrado.",
+      "exemplo": "Esperada < 5 em muitas células indica usar Fisher."
+    },
+    {
+      "id": "g_hazard_ratio",
+      "termo": "Hazard ratio (HR)",
+      "definicao": "Razão entre as taxas instantâneas de evento ao longo do tempo; medida da análise de sobrevida.",
+      "exemplo": "HR 0,7 = redução de 30% na taxa de óbito."
+    },
+    {
+      "id": "g_hipotese_nula",
+      "termo": "Hipótese nula (H0)",
+      "definicao": "Afirmação de ausência de efeito ou diferença, que o teste tenta refutar.",
+      "exemplo": "A mortalidade é igual nos dois grupos."
+    },
+    {
+      "id": "g_homogeneidade_de_variancias",
+      "termo": "Homogeneidade de variâncias",
+      "definicao": "Pressuposto de que os grupos têm dispersão semelhante.",
+      "exemplo": "Verificada pelo teste de Levene."
+    },
+    {
+      "id": "g_incidencia",
+      "termo": "Incidência",
+      "definicao": "Proporção ou taxa de casos novos num período, entre os que estavam em risco.",
+      "exemplo": "8 novos casos de lesão renal por 100 pacientes em 7 dias."
+    },
+    {
+      "id": "g_intencao_de_tratar",
+      "termo": "Intenção de tratar",
+      "definicao": "Analisar cada participante no grupo para o qual foi sorteado, mesmo que não tenha seguido o tratamento.",
+      "exemplo": "Preserva os benefícios da randomização."
+    },
+    {
+      "id": "g_intervalo_de_confianca",
+      "termo": "Intervalo de confiança (IC 95%)",
+      "definicao": "Faixa de valores compatíveis com os dados; informa a precisão da estimativa.",
+      "exemplo": "RR 0,6 (IC 95% 0,4–0,9)."
+    },
+    {
+      "id": "g_intervalo_interquartil",
+      "termo": "Intervalo interquartil (IIQ)",
+      "definicao": "Faixa entre o 1º e o 3º quartil; contém os 50% centrais dos dados.",
+      "exemplo": "Mediana 9 (IIQ 6–14) dias."
+    },
+    {
+      "id": "g_kappa",
+      "termo": "Kappa",
+      "definicao": "Concordância entre avaliadores corrigida pelo acaso.",
+      "exemplo": "Kappa 0,7 = concordância substancial."
+    },
+    {
+      "id": "g_mediana",
+      "termo": "Mediana",
+      "definicao": "Valor central quando os dados são ordenados; resiste a valores extremos.",
+      "exemplo": "Mediana de internação de 9 dias."
+    },
+    {
+      "id": "g_media",
+      "termo": "Média",
+      "definicao": "Soma dos valores dividida pelo número de observações; sensível a valores extremos.",
+      "exemplo": "Média de idade de 58 anos."
+    },
+    {
+      "id": "g_nivel_de_significancia",
+      "termo": "Nível de significância (α)",
+      "definicao": "Probabilidade máxima aceita de erro tipo I, definida antes do estudo.",
+      "exemplo": "α = 0,05."
+    },
+    {
+      "id": "g_numero_necessario_para_tratar",
+      "termo": "Número necessário para tratar (NNT)",
+      "definicao": "Quantos pacientes precisam ser tratados para evitar um desfecho; inverso da redução absoluta de risco.",
+      "exemplo": "Redução de 5% → NNT = 20."
+    },
+    {
+      "id": "g_ocultacao_da_alocacao",
+      "termo": "Ocultação da alocação",
+      "definicao": "Impede que quem inclui o participante saiba o próximo grupo do sorteio.",
+      "exemplo": "Envelopes opacos lacrados e numerados."
+    },
+    {
+      "id": "g_odds_ratio",
+      "termo": "Odds ratio (OR)",
+      "definicao": "Razão entre as chances do desfecho (ou da exposição) em dois grupos; medida do caso-controle.",
+      "exemplo": "OR 3 de exposição prévia a carbapenêmicos entre os casos."
+    },
+    {
+      "id": "g_outlier",
+      "termo": "Outlier",
+      "definicao": "Valor muito distante dos demais; pode ser erro ou caso real extremo.",
+      "exemplo": "Internação de 210 dias num grupo com mediana de 8."
+    },
+    {
+      "id": "g_poder_estatistico",
+      "termo": "Poder estatístico",
+      "definicao": "Probabilidade de detectar um efeito de determinado tamanho, se ele existir (1 − β).",
+      "exemplo": "Poder de 80% para detectar redução de 30% para 15%."
+    },
+    {
+      "id": "g_populacao",
+      "termo": "População",
+      "definicao": "Conjunto completo de indivíduos ao qual se quer generalizar o resultado.",
+      "exemplo": "Todos os adultos internados com sepse no estado."
+    },
+    {
+      "id": "g_prevalencia",
+      "termo": "Prevalência",
+      "definicao": "Proporção de pessoas com a condição num momento.",
+      "exemplo": "20% dos internados com infecção hospitalar no dia do inquérito."
+    },
+    {
+      "id": "g_randomizacao",
+      "termo": "Randomização",
+      "definicao": "Alocação por sorteio, que distribui confundidores conhecidos e desconhecidos entre os grupos.",
+      "exemplo": "Sorteio por blocos gerado por computador."
+    },
+    {
+      "id": "g_razao_de_prevalencias",
+      "termo": "Razão de prevalências (RP)",
+      "definicao": "Razão entre prevalências de dois grupos; medida dos estudos transversais.",
+      "exemplo": "RP 1,5 de polifarmácia entre idosos."
+    },
+    {
+      "id": "g_reducao_absoluta_de_risco",
+      "termo": "Redução absoluta de risco",
+      "definicao": "Diferença entre os riscos de dois grupos.",
+      "exemplo": "De 20% para 15% = redução absoluta de 5 pontos."
+    },
+    {
+      "id": "g_regressao",
+      "termo": "Regressão",
+      "definicao": "Modelo que estima a relação entre um desfecho e um ou mais preditores, permitindo ajuste para confundidores.",
+      "exemplo": "Regressão logística para fatores associados a óbito."
+    },
+    {
+      "id": "g_risco_relativo",
+      "termo": "Risco relativo (RR)",
+      "definicao": "Razão entre a incidência nos expostos e nos não expostos; usado em coortes e ensaios.",
+      "exemplo": "RR 2 = o risco nos expostos é o dobro."
+    },
+    {
+      "id": "g_sensibilidade",
+      "termo": "Sensibilidade",
+      "definicao": "Proporção de doentes que o teste identifica como positivos.",
+      "exemplo": "Sensibilidade de 95%: perde 5 em cada 100 doentes."
+    },
+    {
+      "id": "g_significancia_clinica",
+      "termo": "Significância clínica",
+      "definicao": "Relevância prática do efeito para o paciente, além da significância estatística.",
+      "exemplo": "Reduzir a pressão em 1 mmHg pode ser significativo e irrelevante."
+    },
+    {
+      "id": "g_tamanho_de_efeito",
+      "termo": "Tamanho de efeito",
+      "definicao": "Magnitude da diferença ou associação, independente do tamanho da amostra.",
+      "exemplo": "Diferença de 3 dias de internação; d de Cohen 0,5."
+    },
+    {
+      "id": "g_teste_nao_parametrico",
+      "termo": "Teste não paramétrico",
+      "definicao": "Teste que não supõe distribuição específica; usa postos ou sinais.",
+      "exemplo": "Mann-Whitney, Kruskal-Wallis."
+    },
+    {
+      "id": "g_teste_parametrico",
+      "termo": "Teste paramétrico",
+      "definicao": "Teste que supõe uma distribuição (geralmente normal) para os dados.",
+      "exemplo": "Teste t, ANOVA."
+    },
+    {
+      "id": "g_valor_preditivo_positivo",
+      "termo": "Valor preditivo positivo",
+      "definicao": "Probabilidade de ter a doença dado um teste positivo; depende da prevalência.",
+      "exemplo": "Com prevalência baixa, o VPP cai."
+    },
+    {
+      "id": "g_valor_p",
+      "termo": "Valor-p",
+      "definicao": "Probabilidade de obter um resultado tão ou mais extremo que o observado se H0 fosse verdadeira. Não é a probabilidade de H0 ser verdadeira.",
+      "exemplo": "p = 0,03 não significa 3% de chance de não haver efeito."
+    },
+    {
+      "id": "g_variavel_binaria",
+      "termo": "Variável binária",
+      "definicao": "Categórica com apenas duas categorias.",
+      "exemplo": "Cura (sim/não)."
+    },
+    {
+      "id": "g_variavel_categorica",
+      "termo": "Variável categórica",
+      "definicao": "Variável que classifica em categorias sem ordem natural.",
+      "exemplo": "Tipo de infecção; sexo; óbito (sim/não)."
+    },
+    {
+      "id": "g_variavel_ordinal",
+      "termo": "Variável ordinal",
+      "definicao": "Categorias com ordem, mas sem distância fixa entre elas.",
+      "exemplo": "Escala de dor de 0 a 10; estadiamento I a IV."
+    },
+    {
+      "id": "g_variavel_quantitativa",
+      "termo": "Variável quantitativa",
+      "definicao": "Variável medida em números com unidade, que admite operações aritméticas.",
+      "exemplo": "Creatinina sérica (mg/dL), tempo de internação (dias)."
+    },
+    {
+      "id": "g_vies",
+      "termo": "Viés",
+      "definicao": "Erro sistemático que desloca o resultado numa direção, e que não diminui com amostra maior.",
+      "exemplo": "Prontuários incompletos só no grupo controle."
+    },
+    {
+      "id": "g_vies_de_informacao",
+      "termo": "Viés de informação",
+      "definicao": "Erro na medida da exposição ou do desfecho.",
+      "exemplo": "Registro de reação adversa só quando grave."
+    },
+    {
+      "id": "g_vies_de_memoria",
+      "termo": "Viés de memória",
+      "definicao": "Casos lembram de exposições passadas com mais detalhe que controles.",
+      "exemplo": "Mães de crianças com malformação relatam mais uso de medicamentos."
+    },
+    {
+      "id": "g_vies_de_selecao",
+      "termo": "Viés de seleção",
+      "definicao": "Distorção causada pela forma como os participantes entram ou permanecem no estudo.",
+      "exemplo": "Controles escolhidos entre pacientes de outra especialidade."
+    }
+  ]
+}

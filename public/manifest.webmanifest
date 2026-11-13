@@ -1,0 +1,14 @@
+{
+  "name": "Pharma_estat · Consultor de bioestatística @pharmamelo",
+  "short_name": "Pharma_estat",
+  "description": "Desenho do estudo, teste estatístico, tamanho amostral e análise para estudantes da saúde.",
+  "lang": "pt-BR",
+  "start_url": "./#/inicio",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7F9FA",
+  "theme_color": "#0F4C5C",
+  "icons": [
+    { "src": "icones/icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

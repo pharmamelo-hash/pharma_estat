@@ -1,0 +1,126 @@
+{
+  "versao_base": "2026.11-rascunho",
+  "titulo": "Armadilhas da evidência",
+  "subtitulo": "Pergunte antes de concluir: nove situações do hospital em que os números enganam.",
+  "cartoes": [
+    {
+      "id": "correlacao",
+      "titulo": "Confundimento",
+      "cor": "#4C8DFF",
+      "licao": "Andarem juntos não prova que um causa o outro.",
+      "texto": "Em 80 pacientes de UTI, quem recebe mais medicamentos fica mais dias internado. Seria efeito dos medicamentos? Os mais graves (SOFA alto) recebem mais medicamentos e também ficam mais tempo. Ative o ajuste pela gravidade e veja a associação sumir.",
+      "pergunta": "Que fator ligado aos dois (gravidade, idade, comorbidade) pode explicar a associação?",
+      "no_projeto": "Liste os confundidores com base na literatura e planeje controlá-los (estratificação ou regressão).",
+      "refs": [
+        "r_hulley_2013"
+      ],
+      "numero": "1"
+    },
+    {
+      "id": "selecao",
+      "titulo": "Perdas seletivas",
+      "cor": "#8B6CFF",
+      "licao": "Quem sai do estudo muda a conclusão.",
+      "texto": "Um novo protocolo foi comparado ao usual, e nele não há efeito nenhum: a melhora depende só da gravidade. Mas os pacientes mais graves do grupo do novo protocolo são transferidos para outro hospital e saem da análise. Quem fica é mais leve, e o protocolo parece funcionar.",
+      "pergunta": "Quantos saíram de cada grupo, e os que saíram eram diferentes dos que ficaram?",
+      "no_projeto": "Registre as perdas por grupo e o motivo; analise por intenção de tratar.",
+      "refs": [
+        "r_hulley_2013",
+        "r_consort_2025"
+      ],
+      "numero": "2"
+    },
+    {
+      "id": "regressao",
+      "titulo": "Regressão à média",
+      "cor": "#B05CFF",
+      "licao": "Quem entra por um valor extremo tende a voltar ao normal sozinho.",
+      "texto": "Sessenta pacientes tiveram a pressão medida na triagem e no retorno, sem mudar nenhum tratamento. Selecione os que tiveram a pressão mais alta na triagem: no retorno eles \"melhoram\" sozinhos, porque parte do valor alto era variação do momento.",
+      "pergunta": "Os participantes foram incluídos justamente por estarem num valor extremo?",
+      "no_projeto": "Em estudos antes e depois, use grupo controle ou várias medidas basais.",
+      "refs": [
+        "r_barnett_2005"
+      ],
+      "numero": "3"
+    },
+    {
+      "id": "significancia",
+      "titulo": "Significância",
+      "cor": "#F5A623",
+      "licao": "p < 0,05 não garante um efeito que importe ao paciente.",
+      "texto": "Um protocolo novo de alta reduz a reinternação em 30 dias de 12,0% para 11,7%: 0,3 ponto. Aumente o número de pacientes e o valor-p fica minúsculo, mas o benefício continua pequeno demais para justificar a mudança.",
+      "pergunta": "Qual é o tamanho do efeito, com IC 95%, e ele atinge a diferença mínima clinicamente relevante?",
+      "no_projeto": "Defina antes a diferença mínima clinicamente relevante e relate o efeito com IC.",
+      "refs": [
+        "r_wasserstein_2016"
+      ],
+      "numero": "4"
+    },
+    {
+      "id": "amostra",
+      "titulo": "Amostra pequena",
+      "cor": "#2EE6C9",
+      "licao": "Com poucos casos, o acaso cria campeões e vilões.",
+      "texto": "Trinta hospitais têm exatamente a mesma taxa real de infecção de cateter: 5%. Com poucos pacientes por hospital, alguns parecem ter 0% e outros 15%. Aumente o número de pacientes e as taxas convergem para os 5% reais.",
+      "pergunta": "O ranking ou a diferença viria de uma amostra grande o bastante?",
+      "no_projeto": "Calcule o tamanho amostral antes de coletar e desconfie de taxas vindas de poucos casos.",
+      "refs": [
+        "r_altman_1991"
+      ],
+      "numero": "5"
+    },
+    {
+      "id": "taxa_base",
+      "titulo": "Prevalência",
+      "cor": "#FF6B6B",
+      "licao": "O mesmo teste positivo vale menos quando a doença é rara.",
+      "texto": "Teste rápido para dengue com sensibilidade de 90% e especificidade de 95%. Fora da epidemia (prevalência baixa), a maioria dos positivos é falso positivo. Leve a prevalência para a de um surto e veja os positivos ganharem valor.",
+      "pergunta": "Qual é a prevalência na população em que o teste será usado?",
+      "no_projeto": "Em acurácia diagnóstica, relate sensibilidade e especificidade e calcule os valores preditivos para a prevalência real do serviço.",
+      "refs": [
+        "r_altman_bland_1994"
+      ],
+      "numero": "6"
+    },
+    {
+      "id": "media",
+      "titulo": "Média × mediana",
+      "cor": "#4FC3F7",
+      "licao": "Um paciente fora da curva puxa a média; a mediana fica firme.",
+      "texto": "Dez pacientes ficaram internados de 3 a 9 dias. Acrescente um paciente de longa permanência e veja a média subir, enquanto a mediana quase não muda.",
+      "pergunta": "A distribuição é assimétrica ou tem valores extremos?",
+      "no_projeto": "Para tempo de internação e dosagens, descreva por mediana e IIQ e prefira testes não paramétricos.",
+      "refs": [
+        "r_altman_1991"
+      ],
+      "numero": "7"
+    },
+    {
+      "id": "simpson",
+      "titulo": "Paradoxo de Simpson",
+      "cor": "#4ADE80",
+      "licao": "Somar grupos diferentes pode inverter a conclusão.",
+      "texto": "Num estudo real sobre cálculos renais, a cirurgia aberta teve mais sucesso tanto nos cálculos pequenos quanto nos grandes. No total, porém, a técnica percutânea parece melhor: ela foi usada mais nos casos fáceis.",
+      "pergunta": "Os grupos comparados tinham a mesma gravidade?",
+      "no_projeto": "Estratifique ou ajuste pela gravidade; compare grupos com perfil semelhante.",
+      "refs": [
+        "r_charig_1986"
+      ],
+      "numero": "8"
+    },
+    {
+      "id": "risco",
+      "titulo": "Risco relativo × absoluto",
+      "cor": "#FF4D8D",
+      "licao": "A redução relativa impressiona; a absoluta informa.",
+      "texto": "A propaganda diz que a profilaxia \"reduz 25% das tromboses\". Com risco inicial de 8%, isso é cair para 6%: 2 pontos, e é preciso tratar 50 pacientes para evitar uma trombose. Mexa no risco inicial e no RR.",
+      "pergunta": "Qual é a redução absoluta de risco e o NNT para o meu paciente?",
+      "no_projeto": "Relate risco relativo e absoluto (e NNT) juntos.",
+      "refs": [
+        "r_consort_2025",
+        "r_altman_1991"
+      ],
+      "numero": "9"
+    }
+  ]
+}

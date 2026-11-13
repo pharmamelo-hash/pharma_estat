@@ -1,0 +1,1202 @@
+{
+ "versao_base": "2026.11-rascunho",
+ "niveis": [
+  {
+   "id": "basico",
+   "nome": "Básico",
+   "descricao": "Os alicerces: variáveis, resumo dos dados, tipos de estudo e valor-p."
+  },
+  {
+   "id": "intermediario",
+   "nome": "Intermediário",
+   "descricao": "Os testes do dia a dia: comparar grupos, proporções e relacionar variáveis."
+  },
+  {
+   "id": "avancado",
+   "nome": "Avançado",
+   "descricao": "Modelos, poder, sobrevida, confundimento e diagnóstico."
+  }
+ ],
+ "aulas": [
+  {
+   "id": "variaveis",
+   "nivel": "basico",
+   "titulo": "Tipos de variáveis",
+   "resumo": "O tipo da variável decide a análise.",
+   "cenas": [
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Tipos de variáveis",
+      "sub": "a primeira decisão de toda análise"
+     },
+     "legenda": "Antes de qualquer teste, a primeira pergunta é: que tipo de variável eu tenho? É isso que decide a análise."
+    },
+    {
+     "anim": "classificar",
+     "p": {
+      "itens": [
+       [
+        "creatinina (mg/dL)",
+        0
+       ],
+       [
+        "escala de dor 0–10",
+        1
+       ],
+       [
+        "sexo",
+        2
+       ],
+       [
+        "idade (anos)",
+        0
+       ],
+       [
+        "estadiamento I–IV",
+        1
+       ],
+       [
+        "óbito (sim/não)",
+        2
+       ],
+       [
+        "dias internado",
+        0
+       ],
+       [
+        "Glasgow",
+        1
+       ],
+       [
+        "tipo de infecção",
+        2
+       ]
+      ]
+     },
+     "legenda": "Quantitativas são medidas em números com unidade. Ordinais têm ordem, mas sem distância fixa entre as categorias. Categóricas apenas classificam."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Desfecho × exposição",
+      "sub": "o par de tipos aponta o teste"
+     },
+     "legenda": "Em todo estudo há o desfecho, que é o que você quer explicar, e a exposição ou grupo, que pode explicá-lo. O par de tipos dessas duas variáveis aponta o teste."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "A escala de dor de 0 a 10 é uma variável:",
+     "opcoes": [
+      "Quantitativa contínua",
+      "Ordinal",
+      "Categórica nominal"
+     ],
+     "correta": 1,
+     "explicacao": "Há ordem, mas a distância entre 2 e 3 não é necessariamente igual à distância entre 8 e 9. Por isso se usam mediana e testes de postos."
+    },
+    {
+     "pergunta": "\"Óbito em 30 dias (sim/não)\" é uma variável:",
+     "opcoes": [
+      "Ordinal",
+      "Quantitativa",
+      "Categórica binária"
+     ],
+     "correta": 2,
+     "explicacao": "São duas categorias sem ordem numérica: descreve-se por proporção e compara-se por qui-quadrado ou Fisher."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Ver o glossário",
+    "destino": "#/aprender/glossario"
+   },
+   "refs": [
+    "r_altman_1991"
+   ]
+  },
+  {
+   "id": "resumir",
+   "nivel": "basico",
+   "titulo": "Média, mediana e dispersão",
+   "resumo": "Como resumir um conjunto de números sem enganar.",
+   "cenas": [
+    {
+     "anim": "distribuicao",
+     "p": {
+      "forma": "normal",
+      "media": true,
+      "rotulo": "pressão sistólica de 70 pacientes"
+     },
+     "legenda": "Quando os dados são simétricos, a média fica no centro e resume bem o grupo."
+    },
+    {
+     "anim": "distribuicao",
+     "p": {
+      "forma": "assimetrica",
+      "media": true,
+      "mediana": true,
+      "rotulo": "dias de internação de 70 pacientes"
+     },
+     "legenda": "Em dados assimétricos, como tempo de internação, poucos valores muito altos puxam a média. A mediana, que divide o grupo ao meio, representa melhor o paciente típico."
+    },
+    {
+     "anim": "distribuicao",
+     "p": {
+      "forma": "normal",
+      "media": true,
+      "dp": 1,
+      "rotulo": "quanto maior o desvio-padrão, mais espalhados os dados"
+     },
+     "legenda": "O desvio-padrão mede o quanto os valores se espalham em torno da média. Em dados assimétricos, prefira o intervalo interquartil, que guarda os 50% centrais."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Tempo de internação com alguns pacientes de longa permanência deve ser descrito por:",
+     "opcoes": [
+      "Média e desvio-padrão",
+      "Mediana e intervalo interquartil",
+      "Moda"
+     ],
+     "correta": 1,
+     "explicacao": "Valores extremos distorcem a média e o desvio-padrão; mediana e IIQ resistem a eles."
+    },
+    {
+     "pergunta": "O desvio-padrão informa:",
+     "opcoes": [
+      "A dispersão dos valores em torno da média",
+      "A precisão da média estimada",
+      "O valor mais frequente"
+     ],
+     "correta": 0,
+     "explicacao": "A precisão da média é o erro-padrão (desvio-padrão dividido pela raiz de n), que é outra coisa."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Experimentar: média × mediana",
+    "destino": "#/aprender/laboratorio"
+   },
+   "refs": [
+    "r_altman_1991"
+   ]
+  },
+  {
+   "id": "normal",
+   "nivel": "basico",
+   "titulo": "A distribuição normal",
+   "resumo": "A curva em sino e por que tantos testes dependem dela.",
+   "cenas": [
+    {
+     "anim": "distribuicao",
+     "p": {
+      "forma": "normal",
+      "media": true,
+      "rotulo": "distribuição normal"
+     },
+     "legenda": "Muitas medidas biológicas se distribuem em forma de sino: a maioria perto da média e poucos nos extremos."
+    },
+    {
+     "anim": "distribuicao",
+     "p": {
+      "forma": "normal",
+      "media": true,
+      "dp": 2
+     },
+     "legenda": "Na distribuição normal, cerca de 68% dos valores ficam a até um desvio-padrão da média, e cerca de 95% a até dois."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Normal ou não?",
+      "sub": "histograma · gráfico Q-Q · Shapiro-Wilk"
+     },
+     "legenda": "Testes paramétricos, como o teste t e a ANOVA, supõem distribuição aproximadamente normal. Verifique com histograma, gráfico Q-Q e teste de Shapiro-Wilk. Se não for normal, use um teste não paramétrico."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Na distribuição normal, cerca de 95% dos valores estão a até:",
+     "opcoes": [
+      "1 desvio-padrão da média",
+      "2 desvios-padrão da média",
+      "3 desvios-padrão da média"
+     ],
+     "correta": 1,
+     "explicacao": "Mais exatamente, 1,96 desvio-padrão."
+    },
+    {
+     "pergunta": "Se o desfecho não é normal e a amostra é pequena, a conduta é:",
+     "opcoes": [
+      "Usar o teste t assim mesmo",
+      "Usar um teste não paramétrico",
+      "Excluir os valores extremos"
+     ],
+     "correta": 1,
+     "explicacao": "Excluir dados sem justificativa é viés. Testes de postos não exigem normalidade."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Ficha: teste de Shapiro-Wilk",
+    "destino": "#/aprender/teste/t_shapiro_wilk"
+   },
+   "refs": [
+    "r_altman_1991",
+    "r_field_2012"
+   ]
+  },
+  {
+   "id": "amostra_ic",
+   "nivel": "basico",
+   "titulo": "Amostra e intervalo de confiança",
+   "resumo": "Por que toda estimativa vem com uma margem.",
+   "cenas": [
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "População e amostra",
+      "sub": "estimar o todo a partir de uma parte"
+     },
+     "legenda": "Quase nunca estudamos a população inteira. Estudamos uma amostra e, a partir dela, estimamos o valor da população."
+    },
+    {
+     "anim": "amostras_ic",
+     "p": {},
+     "legenda": "Cada amostra dá uma estimativa um pouco diferente. O intervalo de confiança de 95% é construído de modo que, repetindo o estudo muitas vezes, cerca de 95 em cada 100 intervalos contenham o valor verdadeiro."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Largura = precisão",
+      "sub": "amostra maior → intervalo mais estreito"
+     },
+     "legenda": "Intervalo estreito significa estimativa precisa. Intervalo largo, geralmente por amostra pequena, significa incerteza. Relate sempre a estimativa com o seu intervalo."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Um IC 95% largo indica:",
+     "opcoes": [
+      "Estimativa imprecisa",
+      "Resultado significativo",
+      "Erro de cálculo"
+     ],
+     "correta": 0,
+     "explicacao": "A largura reflete a incerteza, em geral por amostra pequena ou dados muito variáveis."
+    },
+    {
+     "pergunta": "Para estreitar o intervalo de confiança, o caminho mais direto é:",
+     "opcoes": [
+      "Aumentar o tamanho da amostra",
+      "Reduzir o nível de confiança para 50%",
+      "Repetir a análise"
+     ],
+     "correta": 0,
+     "explicacao": "A precisão cresce com a raiz do tamanho da amostra."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Experimentar: amostra pequena",
+    "destino": "#/aprender/laboratorio"
+   },
+   "refs": [
+    "r_altman_1991"
+   ]
+  },
+  {
+   "id": "desenhos",
+   "nivel": "basico",
+   "titulo": "Tipos de estudo",
+   "resumo": "Transversal, caso-controle, coorte e ensaio clínico.",
+   "cenas": [
+    {
+     "anim": "desenho",
+     "p": {
+      "tipo": "transversal"
+     },
+     "legenda": "No estudo transversal, exposição e desfecho são medidos no mesmo momento. Ele mede prevalência, mas não mostra quem veio primeiro."
+    },
+    {
+     "anim": "desenho",
+     "p": {
+      "tipo": "caso_controle"
+     },
+     "legenda": "No caso-controle, parte-se de quem tem o desfecho e de quem não tem, e investiga-se a exposição no passado. É eficiente para desfechos raros, e a medida é a odds ratio."
+    },
+    {
+     "anim": "desenho",
+     "p": {
+      "tipo": "coorte"
+     },
+     "legenda": "Na coorte, parte-se da exposição e acompanha-se até o desfecho. Ela mede incidência e risco relativo. Quando tudo já está nos prontuários, a coorte é retrospectiva."
+    },
+    {
+     "anim": "desenho",
+     "p": {
+      "tipo": "ecr"
+     },
+     "legenda": "No ensaio clínico randomizado, o sorteio define quem recebe a intervenção. Ele equilibra os confundidores e é o melhor desenho para testar causa e efeito."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Um estudo parte de pacientes com e sem infecção por KPC e busca, nos prontuários, o uso prévio de carbapenêmicos. É um:",
+     "opcoes": [
+      "Estudo transversal",
+      "Caso-controle",
+      "Ensaio clínico"
+     ],
+     "correta": 1,
+     "explicacao": "Parte do desfecho (infecção) e olha para trás, para a exposição."
+    },
+    {
+     "pergunta": "Qual desenho permite calcular incidência?",
+     "opcoes": [
+      "Transversal",
+      "Caso-controle",
+      "Coorte"
+     ],
+     "correta": 2,
+     "explicacao": "Só o seguimento no tempo de pessoas inicialmente sem o desfecho permite medir casos novos."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Assistente: qual é o meu tipo de estudo?",
+    "destino": "#/planejar/desenho"
+   },
+   "refs": [
+    "r_grimes_2002_overview",
+    "r_hulley_2013"
+   ]
+  },
+  {
+   "id": "valor_p",
+   "nivel": "basico",
+   "titulo": "Hipótese e valor-p",
+   "resumo": "O que o valor-p diz e o que ele não diz.",
+   "cenas": [
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Hipótese nula (H0)",
+      "sub": "\"não há diferença\""
+     },
+     "legenda": "Todo teste parte da hipótese nula: a de que não existe diferença. O teste pergunta se os dados são compatíveis com ela."
+    },
+    {
+     "anim": "valor_p",
+     "p": {
+      "z": 0.8
+     },
+     "legenda": "O valor-p é a probabilidade de observar um resultado tão extremo quanto o seu se a hipótese nula fosse verdadeira. Aqui o resultado está perto do centro: o valor-p é alto."
+    },
+    {
+     "anim": "valor_p",
+     "p": {
+      "z": 2.5
+     },
+     "legenda": "Quanto mais longe do centro, menor o valor-p. Abaixo de 0,05, por convenção, dizemos que o resultado é estatisticamente significativo."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "p < 0,05 não é tudo",
+      "sub": "relate o efeito e o IC 95%"
+     },
+     "legenda": "Atenção: o valor-p não é a probabilidade de a hipótese nula ser verdadeira, e não mede o tamanho nem a importância do efeito. Por isso, relate sempre o efeito com o intervalo de confiança."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "p = 0,03 significa que:",
+     "opcoes": [
+      "Há 3% de chance de a hipótese nula ser verdadeira",
+      "Se não houvesse diferença, um resultado assim ocorreria em 3% das vezes",
+      "O efeito é grande"
+     ],
+     "correta": 1,
+     "explicacao": "O valor-p é calculado supondo a hipótese nula verdadeira; não é a probabilidade dela."
+    },
+    {
+     "pergunta": "Um resultado com p = 0,20 permite concluir que:",
+     "opcoes": [
+      "Os grupos são iguais",
+      "Não há evidência suficiente de diferença",
+      "O estudo está errado"
+     ],
+     "correta": 1,
+     "explicacao": "Ausência de evidência não é evidência de ausência: pode faltar amostra."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Experimentar: significância × relevância",
+    "destino": "#/aprender/laboratorio"
+   },
+   "refs": [
+    "r_wasserstein_2016"
+   ]
+  },
+  {
+   "id": "teste_t",
+   "nivel": "intermediario",
+   "titulo": "Teste t: comparar duas médias",
+   "resumo": "Sinal sobre ruído.",
+   "cenas": [
+    {
+     "anim": "grupos",
+     "p": {
+      "medias": [
+       150,
+       138
+      ],
+      "dp": 9,
+      "rotulos": [
+       "esquema A",
+       "esquema B"
+      ]
+     },
+     "legenda": "Para comparar um desfecho quantitativo entre dois grupos independentes, usamos o teste t. Ele compara a diferença entre as médias com a dispersão dentro dos grupos."
+    },
+    {
+     "anim": "grupos",
+     "p": {
+      "medias": [
+       150,
+       138
+      ],
+      "dp": 24,
+      "rotulos": [
+       "esquema A",
+       "esquema B"
+      ]
+     },
+     "legenda": "A mesma diferença de médias, com muita dispersão, fica difícil de distinguir do acaso. É a razão entre sinal e ruído que conta."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "t de Welch",
+      "sub": "a escolha padrão para duas médias"
+     },
+     "legenda": "Prefira o teste t de Welch, que não exige variâncias iguais. Pressupostos: grupos independentes e distribuição aproximadamente normal. Se não forem atendidos, use Mann-Whitney."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "O teste t para amostras independentes compara:",
+     "opcoes": [
+      "Duas medianas",
+      "Duas médias",
+      "Duas proporções"
+     ],
+     "correta": 1,
+     "explicacao": "Para proporções usa-se o qui-quadrado; para medianas ou postos, o Mann-Whitney."
+    },
+    {
+     "pergunta": "Com variâncias diferentes entre os grupos, o indicado é:",
+     "opcoes": [
+      "t de Student clássico",
+      "t de Welch",
+      "Qui-quadrado"
+     ],
+     "correta": 1,
+     "explicacao": "O teste de Welch corrige os graus de liberdade e protege contra falso positivo."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Ficha: teste t de Welch",
+    "destino": "#/aprender/teste/t_t_welch"
+   },
+   "refs": [
+    "r_delacre_2017",
+    "r_altman_1991"
+   ]
+  },
+  {
+   "id": "pareado",
+   "nivel": "intermediario",
+   "titulo": "Dados pareados: antes e depois",
+   "resumo": "Quando cada paciente é o seu próprio controle.",
+   "cenas": [
+    {
+     "anim": "pareado",
+     "p": {},
+     "legenda": "Quando o mesmo paciente é medido antes e depois, as duas medidas estão ligadas. O teste t pareado analisa a diferença dentro de cada paciente."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Pareado ≠ independente",
+      "sub": "analise as diferenças"
+     },
+     "legenda": "Analisar dados pareados como se fossem grupos independentes desperdiça informação e pode esconder um efeito real. O pressuposto é a normalidade das diferenças, não de cada medida."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Alternativas",
+      "sub": "Wilcoxon pareado · McNemar"
+     },
+     "legenda": "Se as diferenças não forem normais, use o teste de Wilcoxon pareado. Para desfecho sim ou não medido duas vezes, use o teste de McNemar."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Pressão arterial medida nos mesmos 30 pacientes antes e depois de um ajuste de dose. O teste indicado é:",
+     "opcoes": [
+      "t para amostras independentes",
+      "t pareado",
+      "Qui-quadrado"
+     ],
+     "correta": 1,
+     "explicacao": "As medidas são do mesmo paciente: analisa-se a diferença individual."
+    },
+    {
+     "pergunta": "No teste t pareado, a normalidade é verificada:",
+     "opcoes": [
+      "Em cada medida separadamente",
+      "Nas diferenças entre as medidas",
+      "Não precisa ser verificada"
+     ],
+     "correta": 1,
+     "explicacao": "O teste trabalha com uma única variável: a diferença."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Ficha: teste t pareado",
+    "destino": "#/aprender/teste/t_t_pareado"
+   },
+   "refs": [
+    "r_altman_1991"
+   ]
+  },
+  {
+   "id": "anova",
+   "nivel": "intermediario",
+   "titulo": "ANOVA: três ou mais grupos",
+   "resumo": "Por que não fazer vários testes t.",
+   "cenas": [
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Por que ANOVA?",
+      "sub": "vários testes t inflam o erro"
+     },
+     "legenda": "Com três grupos, fazer três testes t eleva a chance de um falso positivo de 5% para cerca de 14%. A ANOVA testa todos os grupos de uma só vez."
+    },
+    {
+     "anim": "grupos",
+     "p": {
+      "medias": [
+       140,
+       150,
+       163
+      ],
+      "dp": 8,
+      "rotulos": [
+       "dose baixa",
+       "dose média",
+       "dose alta"
+      ]
+     },
+     "legenda": "A ANOVA compara a variação entre as médias dos grupos com a variação dentro dos grupos. Se a variação entre grupos for muito maior, a estatística F é alta e o valor-p é baixo."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Depois da ANOVA",
+      "sub": "Tukey · Kruskal-Wallis"
+     },
+     "legenda": "A ANOVA diz apenas que há alguma diferença. Para saber entre quais grupos, usa-se um teste de comparações múltiplas, como o de Tukey. Sem normalidade, a alternativa é o teste de Kruskal-Wallis."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "A ANOVA de um fator significativa indica que:",
+     "opcoes": [
+      "Todos os grupos diferem entre si",
+      "Pelo menos um grupo difere dos demais",
+      "Os grupos são iguais"
+     ],
+     "correta": 1,
+     "explicacao": "Para localizar a diferença é preciso um teste de comparações múltiplas."
+    },
+    {
+     "pergunta": "A estatística F é a razão entre:",
+     "opcoes": [
+      "Variação entre grupos e variação dentro dos grupos",
+      "Média e desvio-padrão",
+      "Dois valores-p"
+     ],
+     "correta": 0,
+     "explicacao": "F alto significa que as médias diferem mais do que o esperado pela dispersão interna."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Ficha: ANOVA de um fator",
+    "destino": "#/aprender/teste/t_anova_um_fator"
+   },
+   "refs": [
+    "r_field_2012",
+    "r_altman_1991"
+   ]
+  },
+  {
+   "id": "nao_parametricos",
+   "nivel": "intermediario",
+   "titulo": "Testes não paramétricos",
+   "resumo": "Quando a ordem vale mais que o valor.",
+   "cenas": [
+    {
+     "anim": "postos",
+     "p": {},
+     "legenda": "Testes não paramétricos trocam os valores pelos seus postos, isto é, pela posição na ordem. Um valor extremo passa a ser apenas o maior e deixa de distorcer a comparação."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Qual usar?",
+      "sub": "Mann-Whitney · Wilcoxon · Kruskal-Wallis · Friedman"
+     },
+     "legenda": "Dois grupos independentes: Mann-Whitney. Duas medidas pareadas: Wilcoxon. Três ou mais grupos: Kruskal-Wallis. Três ou mais medidas repetidas: Friedman."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Quando usar",
+      "sub": "ordinal · assimétrico · amostra pequena"
+     },
+     "legenda": "Use-os para desfechos ordinais, distribuições assimétricas ou amostras pequenas. Descreva os dados com mediana e intervalo interquartil."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Escore de dor (0 a 10) comparado entre dois grupos independentes:",
+     "opcoes": [
+      "Teste t",
+      "Mann-Whitney",
+      "ANOVA"
+     ],
+     "correta": 1,
+     "explicacao": "Desfecho ordinal em dois grupos independentes pede teste de postos."
+    },
+    {
+     "pergunta": "O equivalente não paramétrico da ANOVA de um fator é:",
+     "opcoes": [
+      "Kruskal-Wallis",
+      "McNemar",
+      "Pearson"
+     ],
+     "correta": 0,
+     "explicacao": "O Kruskal-Wallis estende o Mann-Whitney para três ou mais grupos."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Ficha: Mann-Whitney",
+    "destino": "#/aprender/teste/t_mann_whitney"
+   },
+   "refs": [
+    "r_field_2012"
+   ]
+  },
+  {
+   "id": "qui_quadrado",
+   "nivel": "intermediario",
+   "titulo": "Qui-quadrado, risco relativo e odds ratio",
+   "resumo": "Comparar proporções e medir a associação.",
+   "cenas": [
+    {
+     "anim": "tabela2x2",
+     "p": {
+      "a": 8,
+      "b": 12,
+      "c": 4,
+      "d": 16,
+      "medida": "rr",
+      "nota": "RR = 2: o risco nos expostos é o dobro"
+     },
+     "legenda": "Para desfechos do tipo sim ou não, comparamos proporções. Aqui, 40% dos expostos tiveram o desfecho, contra 20% dos não expostos. O risco relativo é a razão entre esses riscos."
+    },
+    {
+     "anim": "tabela2x2",
+     "p": {
+      "a": 8,
+      "b": 12,
+      "c": 4,
+      "d": 16,
+      "medida": "or",
+      "nota": "a OR (2,67) é maior que o RR (2,00) porque o desfecho é comum"
+     },
+     "legenda": "No estudo caso-controle não se calcula risco. Usa-se a odds ratio, a razão entre as chances. Quando o desfecho é frequente, a odds ratio fica maior que o risco relativo."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Qui-quadrado ou Fisher?",
+      "sub": "frequência esperada < 5 → Fisher"
+     },
+     "legenda": "O qui-quadrado testa se a diferença entre as proporções vai além do acaso. Se as frequências esperadas forem baixas, menores que 5, use o teste exato de Fisher."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Em um estudo caso-controle, a medida de associação é:",
+     "opcoes": [
+      "Risco relativo",
+      "Odds ratio",
+      "Razão de prevalências"
+     ],
+     "correta": 1,
+     "explicacao": "A proporção de casos é fixada pelo pesquisador; não há como medir risco."
+    },
+    {
+     "pergunta": "Tabela 2×2 com frequência esperada de 2,1 em uma célula:",
+     "opcoes": [
+      "Qui-quadrado",
+      "Exato de Fisher",
+      "Teste t"
+     ],
+     "correta": 1,
+     "explicacao": "A aproximação do qui-quadrado falha com contagens esperadas baixas."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Analisar uma tabela 2×2 agora",
+    "destino": "#/analisar/auto"
+   },
+   "refs": [
+    "r_agresti_2013",
+    "r_altman_1991"
+   ]
+  },
+  {
+   "id": "correlacao",
+   "nivel": "intermediario",
+   "titulo": "Correlação",
+   "resumo": "Quando duas variáveis caminham juntas.",
+   "cenas": [
+    {
+     "anim": "dispersao",
+     "p": {
+      "r": 0.85,
+      "x": "dose (mg/kg)",
+      "y": "concentração sérica"
+     },
+     "legenda": "A correlação mede o quanto duas variáveis quantitativas variam juntas, em linha reta. O coeficiente r vai de menos 1 a mais 1. Aqui, a relação é forte e positiva."
+    },
+    {
+     "anim": "dispersao",
+     "p": {
+      "r": 0.05,
+      "x": "idade",
+      "y": "concentração sérica",
+      "semente": 31
+     },
+     "legenda": "Quando os pontos formam uma nuvem sem direção, r fica perto de zero: não há relação linear."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Pearson ou Spearman?",
+      "sub": "correlação não é causalidade"
+     },
+     "legenda": "Use Pearson para relações lineares com dados normais, e Spearman para dados ordinais, assimétricos ou relações curvas. E lembre: correlação não prova causa."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "r = −0,80 indica:",
+     "opcoes": [
+      "Relação fraca",
+      "Relação forte e inversa",
+      "Erro de cálculo"
+     ],
+     "correta": 1,
+     "explicacao": "O sinal dá a direção; o valor absoluto dá a força."
+    },
+    {
+     "pergunta": "Duas variáveis muito correlacionadas:",
+     "opcoes": [
+      "Uma causa a outra",
+      "Podem ser ambas causadas por um terceiro fator",
+      "São a mesma variável"
+     ],
+     "correta": 1,
+     "explicacao": "Um confundidor pode produzir a correlação sem relação causal entre elas."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Experimentar: confundimento",
+    "destino": "#/aprender/laboratorio"
+   },
+   "refs": [
+    "r_altman_1991"
+   ]
+  },
+  {
+   "id": "regressao_linear",
+   "nivel": "avancado",
+   "titulo": "Regressão linear",
+   "resumo": "Da correlação à previsão e ao ajuste.",
+   "cenas": [
+    {
+     "anim": "dispersao",
+     "p": {
+      "r": 0.8,
+      "x": "dose (mg/kg)",
+      "y": "concentração sérica"
+     },
+     "legenda": "A regressão linear traça a reta que melhor resume a relação. A inclinação diz quanto o desfecho muda, em média, a cada unidade do preditor."
+    },
+    {
+     "anim": "dispersao",
+     "p": {
+      "r": 0.8,
+      "residuos": true,
+      "x": "dose (mg/kg)",
+      "y": "concentração sérica"
+     },
+     "legenda": "A reta é a que torna mínimos os resíduos, as distâncias de cada ponto até ela. Os resíduos devem se espalhar sem padrão e ter distribuição aproximadamente normal."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Regressão múltipla",
+      "sub": "ajuste por confundidores"
+     },
+     "legenda": "Na regressão múltipla, vários preditores entram juntos. Cada coeficiente mostra o efeito de uma variável mantendo as outras constantes. É assim que se ajusta por confundidores."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Na regressão linear, o coeficiente β de um preditor é:",
+     "opcoes": [
+      "A correlação",
+      "A mudança média do desfecho por unidade do preditor",
+      "O valor-p"
+     ],
+     "correta": 1,
+     "explicacao": "Por exemplo: β = 2 significa que o desfecho sobe 2 unidades a cada unidade do preditor."
+    },
+    {
+     "pergunta": "Os resíduos de um bom modelo linear devem:",
+     "opcoes": [
+      "Formar uma curva",
+      "Espalhar-se sem padrão em torno de zero",
+      "Ser todos positivos"
+     ],
+     "correta": 1,
+     "explicacao": "Padrão nos resíduos indica relação não linear ou variância desigual."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Ficha: regressão linear",
+    "destino": "#/aprender/teste/t_regressao_linear"
+   },
+   "refs": [
+    "r_altman_1991",
+    "r_field_2012"
+   ]
+  },
+  {
+   "id": "regressao_logistica",
+   "nivel": "avancado",
+   "titulo": "Regressão logística",
+   "resumo": "Quando o desfecho é sim ou não.",
+   "cenas": [
+    {
+     "anim": "logistica",
+     "p": {},
+     "legenda": "Quando o desfecho é binário, como óbito ou alta, a regressão logística estima a probabilidade do desfecho, que fica sempre entre zero e um."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Odds ratio ajustada",
+      "sub": "OR > 1 aumenta a chance · OR < 1 reduz"
+     },
+     "legenda": "O resultado é expresso em odds ratio. Uma odds ratio de 1,5 para o escore de gravidade significa que a chance do desfecho aumenta 50% a cada ponto do escore, com os outros fatores constantes."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Quantas variáveis?",
+      "sub": "≈ 10 eventos por variável"
+     },
+     "legenda": "Regra prática: cerca de dez eventos para cada variável no modelo. Com 30 óbitos, o modelo comporta por volta de três variáveis. E, se o desfecho for frequente em coorte ou transversal, a odds ratio exagera o risco."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Com 40 eventos, um modelo logístico comporta aproximadamente:",
+     "opcoes": [
+      "4 variáveis",
+      "12 variáveis",
+      "40 variáveis"
+     ],
+     "correta": 0,
+     "explicacao": "A regra prática é de cerca de 10 eventos por variável."
+    },
+    {
+     "pergunta": "OR ajustada = 0,60 (IC 95% 0,40 a 0,90) indica:",
+     "opcoes": [
+      "Fator de risco",
+      "Fator de proteção, estatisticamente significativo",
+      "Sem associação"
+     ],
+     "correta": 1,
+     "explicacao": "OR abaixo de 1 com intervalo que não inclui 1."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Ficha: regressão logística",
+    "destino": "#/aprender/teste/t_regressao_logistica"
+   },
+   "refs": [
+    "r_peduzzi_1996",
+    "r_agresti_2013"
+   ]
+  },
+  {
+   "id": "poder",
+   "nivel": "avancado",
+   "titulo": "Poder e tamanho da amostra",
+   "resumo": "Quantos participantes o estudo precisa.",
+   "cenas": [
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Dois erros",
+      "sub": "tipo I (α) · tipo II (β) · poder = 1 − β"
+     },
+     "legenda": "Um estudo pode errar de dois modos: ver um efeito que não existe, o erro tipo um, ou deixar passar um efeito que existe, o erro tipo dois. O poder é a chance de detectar um efeito real."
+    },
+    {
+     "anim": "poder",
+     "p": {},
+     "legenda": "Com amostra pequena, as curvas se sobrepõem e o estudo quase não distingue efeito de acaso. Aumentando a amostra, elas se separam e o poder cresce."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Os quatro ingredientes",
+      "sub": "α · poder · efeito · variabilidade"
+     },
+     "legenda": "O tamanho da amostra depende de quatro escolhas: o nível de significância, o poder desejado, em geral 80%, o tamanho do efeito que importa e a variabilidade dos dados. Calcule antes de coletar."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Poder de 80% significa:",
+     "opcoes": [
+      "80% de chance de detectar o efeito, se ele existir",
+      "80% de chance de o resultado ser verdadeiro",
+      "Erro tipo I de 20%"
+     ],
+     "correta": 0,
+     "explicacao": "Os 20% restantes são o erro tipo II."
+    },
+    {
+     "pergunta": "Para detectar um efeito menor, mantendo o poder, é preciso:",
+     "opcoes": [
+      "Amostra menor",
+      "Amostra maior",
+      "O mesmo tamanho"
+     ],
+     "correta": 1,
+     "explicacao": "Efeitos pequenos exigem mais participantes para se destacarem do ruído."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Calcular o tamanho da amostra",
+    "destino": "#/planejar/amostra"
+   },
+   "refs": [
+    "r_chow_2017",
+    "r_hulley_2013"
+   ]
+  },
+  {
+   "id": "sobrevida",
+   "nivel": "avancado",
+   "titulo": "Análise de sobrevida",
+   "resumo": "Tempo até o evento e censura.",
+   "cenas": [
+    {
+     "anim": "sobrevida",
+     "p": {},
+     "legenda": "Quando interessa o tempo até um evento, como óbito ou alta, usa-se a curva de Kaplan-Meier. Cada degrau é um evento. Os tracinhos marcam a censura: pacientes que saíram do seguimento sem ter o evento."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Censura e log-rank",
+      "sub": "ninguém é descartado"
+     },
+     "legenda": "A censura é o que torna esta análise especial: o paciente contribui com o tempo em que foi observado, em vez de ser descartado. O teste de log-rank compara as curvas inteiras."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Hazard ratio",
+      "sub": "regressão de Cox"
+     },
+     "legenda": "A regressão de Cox estima o hazard ratio, ajustando por outros fatores. Um hazard ratio de 0,7 significa uma taxa de eventos 30% menor ao longo do seguimento."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Paciente transferido no 10º dia, sem ter tido o evento, é:",
+     "opcoes": [
+      "Excluído da análise",
+      "Censurado no 10º dia",
+      "Contado como evento"
+     ],
+     "correta": 1,
+     "explicacao": "Ele contribui com 10 dias de observação sem evento."
+    },
+    {
+     "pergunta": "O teste que compara curvas de Kaplan-Meier é o:",
+     "opcoes": [
+      "Log-rank",
+      "Qui-quadrado",
+      "t de Welch"
+     ],
+     "correta": 0,
+     "explicacao": "O log-rank compara os eventos observados e esperados ao longo de todo o seguimento."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Ficha: Kaplan-Meier e log-rank",
+    "destino": "#/aprender/teste/t_kaplan_meier_logrank"
+   },
+   "refs": [
+    "r_altman_1991"
+   ]
+  },
+  {
+   "id": "confundimento",
+   "nivel": "avancado",
+   "titulo": "Confundimento e ajuste",
+   "resumo": "A terceira variável que engana.",
+   "cenas": [
+    {
+     "anim": "confundimento",
+     "p": {
+      "exposicao": "nº de medicamentos",
+      "desfecho": "dias de internação",
+      "confundidor": "gravidade (SOFA)"
+     },
+     "legenda": "Pacientes que usam mais medicamentos ficam mais tempo internados. Mas a gravidade aumenta tanto o número de medicamentos quanto o tempo de internação. Ela é um confundidor."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Como controlar",
+      "sub": "sorteio · pareamento · estratificação · regressão"
+     },
+     "legenda": "Controla-se o confundimento no desenho, com sorteio, restrição ou pareamento, ou na análise, com estratificação ou regressão múltipla."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Planeje antes",
+      "sub": "o que não foi medido não se ajusta"
+     },
+     "legenda": "Em estudos observacionais, liste os confundidores a partir da literatura antes de coletar os dados. O que não foi medido não pode ser ajustado depois."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Para ser um confundidor, a variável precisa estar associada:",
+     "opcoes": [
+      "Só à exposição",
+      "Só ao desfecho",
+      "À exposição e ao desfecho"
+     ],
+     "correta": 2,
+     "explicacao": "E não pode ser um passo intermediário entre a exposição e o desfecho."
+    },
+    {
+     "pergunta": "O desenho que melhor controla confundidores desconhecidos é:",
+     "opcoes": [
+      "Caso-controle",
+      "Ensaio randomizado",
+      "Série de casos"
+     ],
+     "correta": 1,
+     "explicacao": "O sorteio distribui igualmente, em média, fatores conhecidos e desconhecidos."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Experimentar: confundimento e Simpson",
+    "destino": "#/aprender/laboratorio"
+   },
+   "refs": [
+    "r_hulley_2013"
+   ]
+  },
+  {
+   "id": "diagnostico",
+   "nivel": "avancado",
+   "titulo": "Testes diagnósticos",
+   "resumo": "Sensibilidade, especificidade e curva ROC.",
+   "cenas": [
+    {
+     "anim": "tabela2x2",
+     "p": {
+      "a": 18,
+      "b": 2,
+      "c": 3,
+      "d": 17,
+      "modo": "diag"
+     },
+     "legenda": "Sensibilidade é a proporção de doentes com teste positivo. Especificidade é a proporção de sadios com teste negativo. Aqui, o teste detecta 18 de 20 doentes e dá falso positivo em 3 de 20 sadios."
+    },
+    {
+     "anim": "roc",
+     "p": {},
+     "legenda": "Quando o teste dá um valor numérico, cada ponto de corte tem a sua sensibilidade e a sua especificidade. A curva ROC mostra todos eles, e a área sob a curva resume o desempenho."
+    },
+    {
+     "anim": "titulo",
+     "p": {
+      "texto": "Valores preditivos",
+      "sub": "dependem da prevalência"
+     },
+     "legenda": "Os valores preditivos respondem à pergunta do paciente: com teste positivo, qual a chance de eu ter a doença? Eles dependem da prevalência: quanto mais rara a doença, mais falsos positivos."
+    }
+   ],
+   "quiz": [
+    {
+     "pergunta": "Um teste detecta 90 de 100 doentes. Sua sensibilidade é:",
+     "opcoes": [
+      "90%",
+      "10%",
+      "Depende da prevalência"
+     ],
+     "correta": 0,
+     "explicacao": "Sensibilidade = verdadeiros positivos ÷ total de doentes; não depende da prevalência."
+    },
+    {
+     "pergunta": "Em população com prevalência muito baixa, um teste positivo:",
+     "opcoes": [
+      "Confirma a doença",
+      "Tem valor preditivo positivo baixo",
+      "Tem sensibilidade menor"
+     ],
+     "correta": 1,
+     "explicacao": "Com poucos doentes, a maioria dos positivos vem dos sadios (falsos positivos)."
+    }
+   ],
+   "pratica": {
+    "rotulo": "Experimentar: prevalência e valor preditivo",
+    "destino": "#/aprender/laboratorio"
+   },
+   "refs": [
+    "r_stard_2015",
+    "r_altman_bland_1994"
+   ]
+  }
+ ]
+}

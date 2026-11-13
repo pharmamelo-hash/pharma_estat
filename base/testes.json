@@ -1,0 +1,454 @@
+{
+  "versao_base": "2026.11-rascunho",
+  "status": "rascunho — aguarda revisão por segundo revisor (tarefa 11)",
+  "objetivos": {
+    "comparar": "Comparar grupos ou momentos",
+    "correlacionar": "Relacionar duas variáveis",
+    "modelar": "Ajustar por vários fatores ou predizer",
+    "sobrevivencia": "Tempo até um evento",
+    "concordancia": "Concordância, confiabilidade e acurácia",
+    "pressuposto": "Verificar pressupostos"
+  },
+  "testes": [
+    {
+      "id": "t_t_welch", "nome": "Teste t de Welch (amostras independentes)", "objetivo": "comparar",
+      "desfecho": "quantitativo", "grupos": "2", "pareado": false,
+      "usar_quando": "Comparar a média de um desfecho quantitativo entre dois grupos independentes, com distribuição aproximadamente normal em cada grupo.",
+      "nao_usar_quando": "Distribuição muito assimétrica com amostra pequena, outliers importantes ou desfecho ordinal.",
+      "porque": "Compara médias sem exigir variâncias iguais. Quando as variâncias são iguais, dá praticamente o mesmo resultado do t de Student; quando diferem, protege contra falso positivo. Por isso é a escolha padrão.",
+      "pressupostos": [
+        { "nome": "Observações independentes", "como_verificar": "Desenho do estudo: cada participante em um só grupo." },
+        { "nome": "Normalidade em cada grupo", "como_verificar": "Histograma, gráfico Q-Q e Shapiro-Wilk; com n ≥ 30 por grupo o teste tolera desvios moderados." }
+      ],
+      "alternativa": "t_mann_whitney",
+      "efeito": "Diferença de médias com IC 95%; d de Cohen como medida padronizada.",
+      "funcao_r": "t.test(y ~ grupo, data = d)",
+      "como_relatar": "A média de [desfecho] foi [m1] (DP [dp1]) no grupo A e [m2] (DP [dp2]) no grupo B; diferença de [dif] (IC 95% [li] a [ls]); teste t de Welch, p = [p].",
+      "analise_no_app": true,
+      "refs": ["r_delacre_2017", "r_altman_1991"]
+    },
+    {
+      "id": "t_mann_whitney", "nome": "Teste de Mann-Whitney (Wilcoxon de postos)", "objetivo": "comparar",
+      "desfecho": "quantitativo_ou_ordinal", "grupos": "2", "pareado": false,
+      "usar_quando": "Comparar dois grupos independentes quando o desfecho é ordinal ou quantitativo sem distribuição normal.",
+      "nao_usar_quando": "Dados pareados (use Wilcoxon pareado).",
+      "porque": "Compara a ordem (postos) dos valores, sem exigir normalidade. É robusto a valores extremos.",
+      "pressupostos": [
+        { "nome": "Observações independentes", "como_verificar": "Desenho do estudo." },
+        { "nome": "Desfecho ao menos ordinal", "como_verificar": "Os valores podem ser ordenados." },
+        { "nome": "Formato semelhante das distribuições", "como_verificar": "Necessário para interpretar como diferença de medianas; compare histogramas." }
+      ],
+      "alternativa": "t_t_welch",
+      "efeito": "Diferença de medianas (Hodges-Lehmann) com IC 95%.",
+      "funcao_r": "wilcox.test(y ~ grupo, data = d, conf.int = TRUE)",
+      "como_relatar": "[Desfecho] teve mediana [md1] (IIQ [q1]–[q3]) no grupo A e [md2] (IIQ) no grupo B; diferença de localização de Hodges-Lehmann [hl] (IC 95% [li] a [ls]); teste de Mann-Whitney, p = [p].",
+      "analise_no_app": true,
+      "refs": ["r_altman_1991", "r_field_2012"]
+    },
+    {
+      "id": "t_t_pareado", "nome": "Teste t pareado", "objetivo": "comparar",
+      "desfecho": "quantitativo", "grupos": "2", "pareado": true,
+      "usar_quando": "Comparar duas medidas no mesmo participante (antes e depois) ou em pares, com diferenças aproximadamente normais.",
+      "nao_usar_quando": "Grupos formados por pessoas diferentes.",
+      "porque": "Analisa a diferença dentro de cada participante, eliminando a variação entre pessoas; por isso tem mais poder que o teste para grupos independentes.",
+      "pressupostos": [
+        { "nome": "Pares bem definidos", "como_verificar": "Cada medida tem seu par." },
+        { "nome": "Normalidade das diferenças", "como_verificar": "Shapiro-Wilk e gráfico Q-Q das diferenças (não de cada medida)." }
+      ],
+      "alternativa": "t_wilcoxon_pareado",
+      "efeito": "Média das diferenças com IC 95%.",
+      "funcao_r": "t.test(depois, antes, paired = TRUE)",
+      "como_relatar": "A média de [desfecho] variou de [m1] para [m2]; diferença média de [dif] (IC 95% [li] a [ls]); teste t pareado, p = [p].",
+      "analise_no_app": true,
+      "refs": ["r_altman_1991"]
+    },
+    {
+      "id": "t_wilcoxon_pareado", "nome": "Teste de Wilcoxon pareado (postos sinalizados)", "objetivo": "comparar",
+      "desfecho": "quantitativo_ou_ordinal", "grupos": "2", "pareado": true,
+      "usar_quando": "Comparar duas medidas pareadas quando as diferenças não são normais ou o desfecho é ordinal.",
+      "nao_usar_quando": "Grupos independentes.",
+      "porque": "Usa os postos das diferenças dentro de cada par, sem exigir normalidade.",
+      "pressupostos": [
+        { "nome": "Pares bem definidos", "como_verificar": "Cada medida tem seu par." },
+        { "nome": "Distribuição das diferenças simétrica", "como_verificar": "Histograma das diferenças." }
+      ],
+      "alternativa": "t_t_pareado",
+      "efeito": "Pseudomediana das diferenças (Hodges-Lehmann) com IC 95%.",
+      "funcao_r": "wilcox.test(depois, antes, paired = TRUE, conf.int = TRUE)",
+      "como_relatar": "A mediana de [desfecho] passou de [md1] para [md2]; pseudomediana das diferenças [hl] (IC 95% [li] a [ls]); teste de Wilcoxon pareado, p = [p].",
+      "analise_no_app": true,
+      "refs": ["r_altman_1991"]
+    },
+    {
+      "id": "t_anova_um_fator", "nome": "ANOVA de um fator com teste de Tukey", "objetivo": "comparar",
+      "desfecho": "quantitativo", "grupos": "3+", "pareado": false,
+      "usar_quando": "Comparar médias de três ou mais grupos independentes, com normalidade e variâncias semelhantes.",
+      "nao_usar_quando": "Variâncias muito diferentes (use ANOVA de Welch) ou distribuição não normal com n pequeno.",
+      "porque": "Testa todas as médias de uma vez, evitando a inflação de erro de fazer vários testes t. Se houver diferença, o Tukey indica quais pares diferem, controlando o erro.",
+      "pressupostos": [
+        { "nome": "Observações independentes", "como_verificar": "Desenho do estudo." },
+        { "nome": "Normalidade dos resíduos", "como_verificar": "Shapiro-Wilk e gráfico Q-Q dos resíduos." },
+        { "nome": "Homogeneidade de variâncias", "como_verificar": "Teste de Levene (centrado na mediana)." }
+      ],
+      "alternativa": "t_kruskal_wallis",
+      "efeito": "Eta ao quadrado (η²); diferenças entre pares com IC 95% (Tukey).",
+      "funcao_r": "aov(y ~ grupo, data = d); TukeyHSD(modelo)",
+      "como_relatar": "[Desfecho] diferiu entre os grupos (ANOVA, F([gl1], [gl2]) = [F], p = [p], η² = [eta]); pelo teste de Tukey, [grupo X] diferiu de [grupo Y] (diferença [dif]; IC 95% [li] a [ls]).",
+      "analise_no_app": true,
+      "refs": ["r_altman_1991", "r_field_2012"]
+    },
+    {
+      "id": "t_welch_anova", "nome": "ANOVA de Welch", "objetivo": "comparar",
+      "desfecho": "quantitativo", "grupos": "3+", "pareado": false,
+      "usar_quando": "Três ou mais grupos independentes com normalidade, mas variâncias diferentes.",
+      "nao_usar_quando": "Distribuição muito assimétrica com amostras pequenas.",
+      "porque": "Generaliza o t de Welch para mais de dois grupos e não exige variâncias iguais.",
+      "pressupostos": [
+        { "nome": "Observações independentes", "como_verificar": "Desenho do estudo." },
+        { "nome": "Normalidade em cada grupo", "como_verificar": "Shapiro-Wilk por grupo." }
+      ],
+      "alternativa": "t_kruskal_wallis",
+      "efeito": "Diferenças de médias entre pares com IC 95% (comparações com correção de Holm).",
+      "funcao_r": "oneway.test(y ~ grupo, data = d, var.equal = FALSE)",
+      "como_relatar": "[Desfecho] diferiu entre os grupos (ANOVA de Welch, F([gl1], [gl2]) = [F], p = [p]).",
+      "analise_no_app": true,
+      "refs": ["r_delacre_2017", "r_field_2012"]
+    },
+    {
+      "id": "t_kruskal_wallis", "nome": "Teste de Kruskal-Wallis", "objetivo": "comparar",
+      "desfecho": "quantitativo_ou_ordinal", "grupos": "3+", "pareado": false,
+      "usar_quando": "Comparar três ou mais grupos independentes com desfecho ordinal ou não normal.",
+      "nao_usar_quando": "Medidas repetidas nos mesmos participantes (use Friedman).",
+      "porque": "Extensão do Mann-Whitney para mais de dois grupos, baseada em postos.",
+      "pressupostos": [
+        { "nome": "Observações independentes", "como_verificar": "Desenho do estudo." },
+        { "nome": "Desfecho ao menos ordinal", "como_verificar": "Os valores podem ser ordenados." }
+      ],
+      "alternativa": "t_anova_um_fator",
+      "efeito": "Épsilon ao quadrado; comparações de pares por Mann-Whitney com correção de Holm.",
+      "funcao_r": "kruskal.test(y ~ grupo, data = d); pairwise.wilcox.test(d$y, d$grupo, p.adjust.method = 'holm')",
+      "como_relatar": "[Desfecho] diferiu entre os grupos (Kruskal-Wallis, H = [H], gl = [gl], p = [p]); nas comparações com correção de Holm, [grupo X] diferiu de [grupo Y] (p = [p]).",
+      "analise_no_app": true,
+      "refs": ["r_field_2012"]
+    },
+    {
+      "id": "t_anova_medidas_repetidas", "nome": "ANOVA de medidas repetidas", "objetivo": "comparar",
+      "desfecho": "quantitativo", "grupos": "3+", "pareado": true,
+      "usar_quando": "Três ou mais medidas no mesmo participante (ex.: D0, D7, D14), com normalidade.",
+      "nao_usar_quando": "Muitos dados faltantes entre os momentos (prefira modelo misto).",
+      "porque": "Considera que as medidas vêm da mesma pessoa, separando a variação entre e dentro dos participantes.",
+      "pressupostos": [
+        { "nome": "Normalidade dos resíduos", "como_verificar": "Gráfico Q-Q dos resíduos." },
+        { "nome": "Esfericidade", "como_verificar": "Teste de Mauchly; se violada, correção de Greenhouse-Geisser." }
+      ],
+      "alternativa": "t_friedman",
+      "efeito": "Eta ao quadrado parcial; diferenças entre momentos com IC 95%.",
+      "funcao_r": "aov(y ~ momento + Error(id/momento), data = d_longo)",
+      "como_relatar": "[Desfecho] variou entre os momentos (ANOVA de medidas repetidas, F([gl1], [gl2]) = [F], p = [p]).",
+      "analise_no_app": false,
+      "refs": ["r_field_2012"],
+      "encaminhar_bioestatistico": true
+    },
+    {
+      "id": "t_friedman", "nome": "Teste de Friedman", "objetivo": "comparar",
+      "desfecho": "quantitativo_ou_ordinal", "grupos": "3+", "pareado": true,
+      "usar_quando": "Três ou mais medidas repetidas no mesmo participante, desfecho ordinal ou não normal.",
+      "nao_usar_quando": "Grupos independentes.",
+      "porque": "Versão por postos da ANOVA de medidas repetidas.",
+      "pressupostos": [
+        { "nome": "Medidas completas para cada participante", "como_verificar": "Sem dados faltantes entre os momentos." }
+      ],
+      "alternativa": "t_anova_medidas_repetidas",
+      "efeito": "W de Kendall; comparações de pares por Wilcoxon pareado com Holm.",
+      "funcao_r": "friedman.test(matriz_medidas)",
+      "como_relatar": "[Desfecho] diferiu entre os momentos (Friedman, χ² = [x], gl = [gl], p = [p]).",
+      "analise_no_app": true,
+      "refs": ["r_field_2012"]
+    },
+    {
+      "id": "t_qui_quadrado", "nome": "Teste qui-quadrado de independência", "objetivo": "comparar",
+      "desfecho": "categorico", "grupos": "2+", "pareado": false,
+      "usar_quando": "Verificar associação entre duas variáveis categóricas em grupos independentes, com frequências esperadas adequadas.",
+      "nao_usar_quando": "Mais de 20% das células com frequência esperada < 5 ou alguma < 1 (use Fisher); dados pareados (use McNemar).",
+      "porque": "Compara as frequências observadas com as esperadas se não houvesse associação.",
+      "pressupostos": [
+        { "nome": "Observações independentes", "como_verificar": "Cada participante conta uma vez." },
+        { "nome": "Frequências esperadas", "como_verificar": "Nenhuma esperada < 1 e no máximo 20% < 5." }
+      ],
+      "alternativa": "t_fisher_exato",
+      "efeito": "Tabela 2×2: risco relativo ou razão de prevalências (coorte, transversal) ou odds ratio (caso-controle), com IC 95%; tabelas maiores: V de Cramér.",
+      "funcao_r": "chisq.test(table(exposicao, desfecho), correct = FALSE)",
+      "como_relatar": "[Desfecho] ocorreu em [n1/N1 (%)] dos expostos e [n2/N2 (%)] dos não expostos; [RR/RP/OR] = [valor] (IC 95% [li] a [ls]); qui-quadrado, p = [p].",
+      "analise_no_app": true,
+      "refs": ["r_agresti_2013", "r_altman_1991"]
+    },
+    {
+      "id": "t_fisher_exato", "nome": "Teste exato de Fisher", "objetivo": "comparar",
+      "desfecho": "categorico", "grupos": "2+", "pareado": false,
+      "usar_quando": "Associação entre variáveis categóricas com amostra pequena ou frequências esperadas baixas.",
+      "nao_usar_quando": "Dados pareados.",
+      "porque": "Calcula a probabilidade exata, sem depender da aproximação do qui-quadrado, que falha com contagens pequenas.",
+      "pressupostos": [
+        { "nome": "Observações independentes", "como_verificar": "Cada participante conta uma vez." }
+      ],
+      "alternativa": "t_qui_quadrado",
+      "efeito": "Odds ratio condicional com IC 95% (tabela 2×2); risco relativo quando o desenho permite.",
+      "funcao_r": "fisher.test(table(exposicao, desfecho))",
+      "como_relatar": "[Desfecho] ocorreu em [n1/N1] e [n2/N2]; OR = [valor] (IC 95% [li] a [ls]); teste exato de Fisher, p = [p].",
+      "analise_no_app": true,
+      "refs": ["r_agresti_2013"]
+    },
+    {
+      "id": "t_mcnemar", "nome": "Teste de McNemar", "objetivo": "comparar",
+      "desfecho": "categorico", "grupos": "2", "pareado": true,
+      "usar_quando": "Desfecho binário medido duas vezes no mesmo participante (antes e depois) ou em pares de caso-controle pareado.",
+      "nao_usar_quando": "Grupos independentes.",
+      "porque": "Usa apenas os pares discordantes (quem mudou de categoria), que carregam a informação sobre a mudança.",
+      "pressupostos": [
+        { "nome": "Pares bem definidos", "como_verificar": "Cada observação tem seu par." },
+        { "nome": "Pares discordantes suficientes", "como_verificar": "Com menos de 25 discordantes, use a versão exata (binomial)." }
+      ],
+      "alternativa": "t_qui_quadrado",
+      "efeito": "Diferença de proporções pareadas com IC 95%; OR pareado = b/c.",
+      "funcao_r": "mcnemar.test(table(antes, depois))",
+      "como_relatar": "A proporção de [desfecho] passou de [p1]% para [p2]%; teste de McNemar, p = [p].",
+      "analise_no_app": true,
+      "refs": ["r_agresti_2013", "r_altman_1991"]
+    },
+    {
+      "id": "t_cochran_q", "nome": "Teste Q de Cochran", "objetivo": "comparar",
+      "desfecho": "categorico", "grupos": "3+", "pareado": true,
+      "usar_quando": "Desfecho binário medido três ou mais vezes no mesmo participante.",
+      "nao_usar_quando": "Desfecho com mais de duas categorias.",
+      "porque": "Extensão do McNemar para mais de dois momentos.",
+      "pressupostos": [
+        { "nome": "Medidas completas", "como_verificar": "Cada participante com todos os momentos." }
+      ],
+      "alternativa": "t_mcnemar",
+      "efeito": "Proporções por momento; comparações de pares por McNemar com correção de Holm.",
+      "funcao_r": "Implementação manual (sem pacote extra) ou RVAideMemoire::cochran.qtest",
+      "como_relatar": "A proporção de [desfecho] diferiu entre os momentos (Q de Cochran = [Q], gl = [gl], p = [p]).",
+      "analise_no_app": false,
+      "refs": ["r_agresti_2013"]
+    },
+    {
+      "id": "t_pearson", "nome": "Correlação de Pearson", "objetivo": "correlacionar",
+      "desfecho": "quantitativo", "grupos": "nao_se_aplica", "pareado": false,
+      "usar_quando": "Medir a força da relação linear entre duas variáveis quantitativas com distribuição aproximadamente normal.",
+      "nao_usar_quando": "Relação curva, outliers ou variáveis ordinais (use Spearman).",
+      "porque": "Quantifica de -1 a +1 o quanto os pontos seguem uma reta.",
+      "pressupostos": [
+        { "nome": "Relação linear", "como_verificar": "Gráfico de dispersão." },
+        { "nome": "Normalidade bivariada aproximada", "como_verificar": "Shapiro-Wilk de cada variável e gráfico de dispersão sem outliers." }
+      ],
+      "alternativa": "t_spearman",
+      "efeito": "r de Pearson com IC 95%.",
+      "funcao_r": "cor.test(x, y, method = 'pearson')",
+      "como_relatar": "Houve correlação [positiva/negativa] entre [x] e [y] (r = [r]; IC 95% [li] a [ls]; p = [p]).",
+      "analise_no_app": true,
+      "refs": ["r_altman_1991"]
+    },
+    {
+      "id": "t_spearman", "nome": "Correlação de Spearman", "objetivo": "correlacionar",
+      "desfecho": "quantitativo_ou_ordinal", "grupos": "nao_se_aplica", "pareado": false,
+      "usar_quando": "Relação entre duas variáveis ordinais ou quantitativas sem normalidade, ou relação monotônica não linear.",
+      "nao_usar_quando": "Relação que sobe e depois desce (não monotônica).",
+      "porque": "Correlaciona os postos, resistindo a outliers e a relações curvas que sempre sobem ou sempre descem.",
+      "pressupostos": [
+        { "nome": "Relação monotônica", "como_verificar": "Gráfico de dispersão." }
+      ],
+      "alternativa": "t_pearson",
+      "efeito": "rho de Spearman.",
+      "funcao_r": "cor.test(x, y, method = 'spearman', exact = FALSE)",
+      "como_relatar": "Houve correlação [positiva/negativa] entre [x] e [y] (rho de Spearman = [rho]; p = [p]).",
+      "analise_no_app": true,
+      "refs": ["r_altman_1991"]
+    },
+    {
+      "id": "t_regressao_linear", "nome": "Regressão linear múltipla", "objetivo": "modelar",
+      "desfecho": "quantitativo", "grupos": "nao_se_aplica", "pareado": false,
+      "usar_quando": "Desfecho quantitativo explicado por uma ou mais variáveis, com ajuste para confundidores.",
+      "nao_usar_quando": "Desfecho binário ou contagem.",
+      "porque": "Estima quanto o desfecho muda para cada unidade do preditor, mantendo os demais constantes.",
+      "pressupostos": [
+        { "nome": "Linearidade", "como_verificar": "Resíduos × valores ajustados." },
+        { "nome": "Normalidade e homogeneidade dos resíduos", "como_verificar": "Gráfico Q-Q e de resíduos." },
+        { "nome": "Ausência de multicolinearidade", "como_verificar": "VIF < 5." }
+      ],
+      "alternativa": "t_spearman",
+      "efeito": "Coeficientes β com IC 95%; R² ajustado.",
+      "funcao_r": "lm(y ~ x1 + x2, data = d)",
+      "como_relatar": "Cada unidade de [x] associou-se a uma variação de [β] em [y] (IC 95% [li] a [ls]; p = [p]), ajustado por [covariáveis].",
+      "analise_no_app": true,
+      "refs": ["r_altman_1991", "r_field_2012"]
+    },
+    {
+      "id": "t_regressao_logistica", "nome": "Regressão logística", "objetivo": "modelar",
+      "desfecho": "binario", "grupos": "nao_se_aplica", "pareado": false,
+      "usar_quando": "Desfecho binário em caso-controle, ou desfecho raro (< 10%) em coorte e transversal, com ajuste para confundidores.",
+      "nao_usar_quando": "Desfecho frequente em transversal ou coorte quando se quer RP ou RR (a OR exagera o efeito).",
+      "porque": "Estima odds ratio ajustada; é o modelo natural do caso-controle.",
+      "pressupostos": [
+        { "nome": "Eventos suficientes", "como_verificar": "Cerca de 10 eventos por variável incluída no modelo." },
+        { "nome": "Linearidade no logito para preditores contínuos", "como_verificar": "Termos de spline ou categorização exploratória." }
+      ],
+      "alternativa": "t_poisson_robusta",
+      "efeito": "Odds ratio ajustada com IC 95%.",
+      "funcao_r": "glm(desfecho ~ exposicao + covariaveis, family = binomial, data = d)",
+      "como_relatar": "[Exposição] associou-se a [desfecho] (OR ajustada = [OR]; IC 95% [li] a [ls]), ajustada por [covariáveis].",
+      "analise_no_app": true,
+      "refs": ["r_peduzzi_1996", "r_agresti_2013"]
+    },
+    {
+      "id": "t_poisson_robusta", "nome": "Regressão de Poisson com variância robusta", "objetivo": "modelar",
+      "desfecho": "binario", "grupos": "nao_se_aplica", "pareado": false,
+      "usar_quando": "Desfecho binário frequente (≥ 10%) em estudo transversal ou coorte, para estimar razão de prevalências ou risco relativo ajustados.",
+      "nao_usar_quando": "Estudo caso-controle (use logística).",
+      "porque": "Estima diretamente RP ou RR, que são mais fáceis de interpretar e não exageram a associação como a OR quando o desfecho é comum.",
+      "pressupostos": [
+        { "nome": "Erro-padrão robusto (sanduíche)", "como_verificar": "Obrigatório: sem ele o IC fica largo demais." },
+        { "nome": "Eventos suficientes por variável", "como_verificar": "Mesma regra da logística." }
+      ],
+      "alternativa": "t_regressao_logistica",
+      "efeito": "Razão de prevalências ou risco relativo ajustados com IC 95%.",
+      "funcao_r": "glm(desfecho ~ exposicao, family = poisson, data = d) + erro-padrão robusto (sandwich)",
+      "como_relatar": "A prevalência de [desfecho] foi [RP] vezes maior em [grupo] (RP ajustada; IC 95% [li] a [ls]).",
+      "analise_no_app": false,
+      "refs": ["r_zou_2004", "r_barros_2003"],
+      "encaminhar_bioestatistico": true
+    },
+    {
+      "id": "t_kaplan_meier_logrank", "nome": "Kaplan-Meier com teste log-rank", "objetivo": "sobrevivencia",
+      "desfecho": "tempo_ate_evento", "grupos": "2+", "pareado": false,
+      "usar_quando": "Comparar o tempo até um evento (óbito, alta, cura) entre grupos, com censura.",
+      "nao_usar_quando": "Necessidade de ajustar por confundidores (use Cox).",
+      "porque": "Usa a informação de quem ainda não teve o evento (censura), que seria perdida comparando só proporções.",
+      "pressupostos": [
+        { "nome": "Censura não informativa", "como_verificar": "Motivo da perda não relacionado ao prognóstico." },
+        { "nome": "Riscos aproximadamente proporcionais", "como_verificar": "Curvas não se cruzam." }
+      ],
+      "alternativa": "t_cox",
+      "efeito": "Mediana de sobrevida por grupo; HR (pelo modelo de Cox).",
+      "funcao_r": "survival::survfit(Surv(tempo, evento) ~ grupo); survival::survdiff(...)",
+      "como_relatar": "A mediana de [tempo] foi [m1] e [m2] dias; log-rank, p = [p].",
+      "analise_no_app": false,
+      "refs": ["r_altman_1991"]
+    },
+    {
+      "id": "t_cox", "nome": "Regressão de Cox (riscos proporcionais)", "objetivo": "sobrevivencia",
+      "desfecho": "tempo_ate_evento", "grupos": "nao_se_aplica", "pareado": false,
+      "usar_quando": "Tempo até evento com ajuste para vários fatores.",
+      "nao_usar_quando": "Riscos claramente não proporcionais.",
+      "porque": "Estima o hazard ratio ajustado aproveitando a censura.",
+      "pressupostos": [
+        { "nome": "Riscos proporcionais", "como_verificar": "Resíduos de Schoenfeld." },
+        { "nome": "Eventos suficientes", "como_verificar": "Cerca de 10 eventos por variável." }
+      ],
+      "alternativa": "t_kaplan_meier_logrank",
+      "efeito": "Hazard ratio ajustado com IC 95%.",
+      "funcao_r": "survival::coxph(Surv(tempo, evento) ~ exposicao + covariaveis)",
+      "como_relatar": "[Exposição] associou-se a maior risco de [evento] (HR ajustado = [HR]; IC 95% [li] a [ls]).",
+      "analise_no_app": false,
+      "refs": ["r_altman_1991", "r_peduzzi_1996"],
+      "encaminhar_bioestatistico": true
+    },
+    {
+      "id": "t_kappa", "nome": "Coeficiente kappa de Cohen", "objetivo": "concordancia",
+      "desfecho": "categorico", "grupos": "nao_se_aplica", "pareado": true,
+      "usar_quando": "Concordância entre dois avaliadores (ou dois momentos) que classificam em categorias.",
+      "nao_usar_quando": "Medidas quantitativas (use ICC ou Bland-Altman).",
+      "porque": "Mede a concordância além da esperada pelo acaso.",
+      "pressupostos": [
+        { "nome": "Mesmas categorias para os dois avaliadores", "como_verificar": "Tabela quadrada." }
+      ],
+      "alternativa": "t_icc",
+      "efeito": "Kappa com IC 95%; interpretação de Landis e Koch.",
+      "funcao_r": "Cálculo direto da tabela de concordância",
+      "como_relatar": "A concordância entre os avaliadores foi [classificação] (kappa = [k]; IC 95% [li] a [ls]).",
+      "analise_no_app": true,
+      "refs": ["r_landis_koch_1977"]
+    },
+    {
+      "id": "t_icc", "nome": "Coeficiente de correlação intraclasse (ICC)", "objetivo": "concordancia",
+      "desfecho": "quantitativo", "grupos": "nao_se_aplica", "pareado": true,
+      "usar_quando": "Confiabilidade de medidas quantitativas entre avaliadores ou repetições.",
+      "nao_usar_quando": "Concordância entre métodos diferentes (prefira Bland-Altman).",
+      "porque": "Considera a concordância absoluta, não só a correlação; Pearson alto não garante medidas iguais.",
+      "pressupostos": [
+        { "nome": "Escolha correta do modelo", "como_verificar": "Definir modelo, tipo e definição (ex.: ICC(2,1), concordância absoluta)." }
+      ],
+      "alternativa": "t_bland_altman",
+      "efeito": "ICC com IC 95%.",
+      "funcao_r": "Modelo de ANOVA com efeitos aleatórios",
+      "como_relatar": "A confiabilidade foi [classificação] (ICC(2,1) de concordância absoluta = [icc]; IC 95% [li] a [ls]).",
+      "analise_no_app": false,
+      "refs": ["r_koo_li_2016"],
+      "encaminhar_bioestatistico": true
+    },
+    {
+      "id": "t_bland_altman", "nome": "Análise de Bland-Altman", "objetivo": "concordancia",
+      "desfecho": "quantitativo", "grupos": "nao_se_aplica", "pareado": true,
+      "usar_quando": "Concordância entre dois métodos de medida da mesma grandeza (ex.: dois equipamentos).",
+      "nao_usar_quando": "Variáveis categóricas.",
+      "porque": "Mostra o viés médio entre os métodos e os limites dentro dos quais 95% das diferenças caem; correlação não mede concordância.",
+      "pressupostos": [
+        { "nome": "Diferenças aproximadamente normais", "como_verificar": "Histograma das diferenças." },
+        { "nome": "Diferença não depende da magnitude", "como_verificar": "Gráfico de diferença × média." }
+      ],
+      "alternativa": "t_icc",
+      "efeito": "Viés médio e limites de concordância de 95%.",
+      "funcao_r": "Diferenças, média e 1,96 × DP",
+      "como_relatar": "O viés médio foi [vies] (limites de concordância de 95%: [li] a [ls]).",
+      "analise_no_app": true,
+      "refs": ["r_bland_altman_1986"]
+    },
+    {
+      "id": "t_acuracia_roc", "nome": "Acurácia diagnóstica e curva ROC", "objetivo": "concordancia",
+      "desfecho": "binario", "grupos": "nao_se_aplica", "pareado": false,
+      "usar_quando": "Avaliar um teste diagnóstico contra um padrão de referência.",
+      "nao_usar_quando": "Não há padrão de referência aceito.",
+      "porque": "Sensibilidade e especificidade descrevem o teste; a curva ROC resume o desempenho em todos os pontos de corte.",
+      "pressupostos": [
+        { "nome": "Padrão de referência aplicado a todos", "como_verificar": "Evitar viés de verificação." }
+      ],
+      "alternativa": "t_kappa",
+      "efeito": "Sensibilidade, especificidade e valores preditivos com IC 95%; AUC.",
+      "funcao_r": "Tabela 2×2 e binom.test para IC exatos",
+      "como_relatar": "O teste teve sensibilidade de [s]% (IC 95% [li] a [ls]) e especificidade de [e]% (IC 95% [li] a [ls]).",
+      "analise_no_app": true,
+      "refs": ["r_stard_2015", "r_altman_1991"]
+    },
+    {
+      "id": "t_shapiro_wilk", "nome": "Teste de Shapiro-Wilk", "objetivo": "pressuposto",
+      "desfecho": "quantitativo", "grupos": "nao_se_aplica", "pareado": false,
+      "usar_quando": "Apoiar a verificação de normalidade, junto com histograma e gráfico Q-Q.",
+      "nao_usar_quando": "Como critério único com amostras muito grandes (detecta desvios irrelevantes) ou muito pequenas (pouco poder).",
+      "porque": "É o teste de normalidade com melhor poder para amostras pequenas e médias.",
+      "pressupostos": [
+        { "nome": "3 a 5000 observações", "como_verificar": "Limite da função do R." }
+      ],
+      "alternativa": "t_shapiro_wilk",
+      "efeito": "Estatística W.",
+      "funcao_r": "shapiro.test(y)",
+      "como_relatar": "A normalidade foi avaliada por histogramas, gráficos Q-Q e teste de Shapiro-Wilk.",
+      "analise_no_app": true,
+      "refs": ["r_field_2012"]
+    },
+    {
+      "id": "t_levene", "nome": "Teste de Levene (centrado na mediana)", "objetivo": "pressuposto",
+      "desfecho": "quantitativo", "grupos": "2+", "pareado": false,
+      "usar_quando": "Verificar se as variâncias dos grupos são semelhantes.",
+      "nao_usar_quando": "Como único critério para escolher entre Student e Welch (prefira Welch por padrão).",
+      "porque": "A versão centrada na mediana (Brown-Forsythe) é robusta à falta de normalidade.",
+      "pressupostos": [
+        { "nome": "Grupos independentes", "como_verificar": "Desenho do estudo." }
+      ],
+      "alternativa": "t_levene",
+      "efeito": "Estatística F.",
+      "funcao_r": "anova(lm(abs(y - ave(y, grupo, FUN = median)) ~ grupo))",
+      "como_relatar": "A homogeneidade de variâncias foi avaliada pelo teste de Levene centrado na mediana.",
+      "analise_no_app": true,
+      "refs": ["r_field_2012"]
+    }
+  ]
+}

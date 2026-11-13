@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Consultor de bioestatística para estudantes da saúde: desenho do estudo, teste estatístico, tamanho amostral e análise." />
+  <meta name="theme-color" content="#0F4C5C" />
+  <!-- Segurança (Doc 7.3): scripts só do próprio domínio; nada é enviado para fora. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icones/icone.svg" type="image/svg+xml" />
+  <title>Pharma_estat · Consultor de bioestatística</title>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <button class="botao-icone so-celular" id="botao-gaveta" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="lateral"></button>
+    <a class="marca" href="#/inicio" aria-label="Ir para o início">
+      <img src="./icones/icone.svg" alt="" width="32" height="32" />
+      <span>
+        <strong id="nome-app">Pharma_estat</strong>
+        <small id="subtitulo-app"></small>
+      </span>
+    </a>
+    <div class="topo-acoes">
+      <button class="botao-busca" id="botao-busca" type="button" aria-label="Buscar no app (atalho: /)"><span id="busca-icone"></span><span class="so-pc">Buscar teste, conceito, aula…</span><kbd class="so-pc">/</kbd></button>
+      <button class="botao-icone" id="botao-tema" type="button" aria-label="Alternar modo escuro"></button>
+    </div>
+  </header>
+
+  <div class="estrutura">
+    <aside class="lateral" id="lateral" aria-label="Menu completo"></aside>
+    <div class="veu" id="veu" hidden></div>
+    <nav class="navegacao" id="navegacao" aria-label="Navegação principal"></nav>
+    <main id="conteudo" class="conteudo" tabindex="-1"></main>
+  </div>
+
+  <footer class="rodape" id="rodape"></footer>
+  <div class="busca-sobreposta" id="busca" role="dialog" aria-modal="true" aria-label="Buscar no app" hidden></div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
