@@ -27,7 +27,7 @@
     "papaparse": "^5.4.1",
     "pdfjs-dist": "^4.10.38",
     "read-excel-file": "^5.8.6",
-    "webr": "^0.6.0"
+    "webr": "^0.6.1"
   },
   "private": true,
   "type": "module"
