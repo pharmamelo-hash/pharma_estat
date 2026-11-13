@@ -26,7 +26,7 @@
     "mammoth": "^1.13.0",
     "papaparse": "^5.4.1",
     "pdfjs-dist": "^4.10.38",
-    "read-excel-file": "^5.8.6",
+    "read-excel-file": "^9.3.14",
     "webr": "^0.6.0"
   },
   "private": true,
